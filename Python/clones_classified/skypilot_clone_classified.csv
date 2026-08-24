@@ -1,0 +1,5 @@
+project,pr,clone_fingerprint,start_commit,end_commit,total_commits,categoria,distancia,duracao
+skypilot,6067,0fc572bac711ddb46841e11b9e8cdb11,1,1,2,unique_ini,0.0,0.5
+skypilot,6067,0fc572bac711ddb46841e11b9e8cdb11,1,1,2,unique_ini,0.0,0.5
+skypilot,6067,0fc572bac711ddb46841e11b9e8cdb11,2,2,2,unique_final,1.0,0.5
+skypilot,6067,0fc572bac711ddb46841e11b9e8cdb11,2,2,2,unique_final,1.0,0.5

@@ -1,0 +1,7 @@
+project,pr,clone_fingerprint,start_commit,end_commit,total_commits,categoria,distancia,duracao
+netius,44,ac1bf9183c61ebdf988c32a2a8c35523,1,1,3,unique_ini,0.0,0.3333
+netius,44,ac1bf9183c61ebdf988c32a2a8c35523,1,1,3,unique_ini,0.0,0.3333
+netius,44,ac1bf9183c61ebdf988c32a2a8c35523,2,2,3,unique_mei,0.6667,0.3333
+netius,44,ac1bf9183c61ebdf988c32a2a8c35523,2,2,3,unique_mei,0.6667,0.3333
+netius,44,ac1bf9183c61ebdf988c32a2a8c35523,3,3,3,unique_final,1.0,0.3333
+netius,44,ac1bf9183c61ebdf988c32a2a8c35523,3,3,3,unique_final,1.0,0.3333

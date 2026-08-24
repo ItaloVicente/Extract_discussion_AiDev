@@ -1,0 +1,11 @@
+project,pr,clone_fingerprint,start_commit,end_commit,total_commits,categoria,distancia,duracao
+edumips64,1360,289767a114e2dfcd9a3ea011dec8cddd,1,1,10,unique_ini,0.0,0.1
+edumips64,1360,289767a114e2dfcd9a3ea011dec8cddd,1,1,10,unique_ini,0.0,0.1
+edumips64,1360,289767a114e2dfcd9a3ea011dec8cddd,2,2,10,unique_mei,0.2,0.1
+edumips64,1360,289767a114e2dfcd9a3ea011dec8cddd,2,2,10,unique_mei,0.2,0.1
+edumips64,1360,289767a114e2dfcd9a3ea011dec8cddd,3,3,10,unique_mei,0.3,0.1
+edumips64,1360,289767a114e2dfcd9a3ea011dec8cddd,3,3,10,unique_mei,0.3,0.1
+edumips64,1360,289767a114e2dfcd9a3ea011dec8cddd,4,4,10,unique_mei,0.4,0.1
+edumips64,1360,289767a114e2dfcd9a3ea011dec8cddd,4,4,10,unique_mei,0.4,0.1
+edumips64,1360,289767a114e2dfcd9a3ea011dec8cddd,5,10,10,mei_final,0.5,0.6
+edumips64,1360,289767a114e2dfcd9a3ea011dec8cddd,5,10,10,mei_final,0.5,0.6

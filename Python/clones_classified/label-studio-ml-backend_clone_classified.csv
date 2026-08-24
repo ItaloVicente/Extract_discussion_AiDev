@@ -1,0 +1,6 @@
+project,pr,clone_fingerprint,start_commit,end_commit,total_commits,categoria,distancia,duracao
+label-studio-ml-backend,782,c17a3184871f5743b8b014beb7587f55,1,7,29,ini_mei,0.0,0.2414
+label-studio-ml-backend,782,65061f32ba5cc1058df0cc844c938a3b,1,7,29,ini_mei,0.0,0.2414
+label-studio-ml-backend,782,c5304f8f913667d88e121a041fdcda36,1,29,29,ini_mei_final,0.0,1.0
+label-studio-ml-backend,782,65061f32ba5cc1058df0cc844c938a3b,8,29,29,mei_final,0.2759,0.7586
+label-studio-ml-backend,782,c17a3184871f5743b8b014beb7587f55,8,29,29,mei_final,0.2759,0.7586

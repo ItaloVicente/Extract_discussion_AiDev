@@ -1,0 +1,3 @@
+project,pr,clone_fingerprint,start_commit,end_commit,total_commits,categoria,distancia,duracao
+chebpy,77,e183fbaddcf322796e79c68372b7ac76,1,1,3,unique_ini,0.0,0.3333
+chebpy,77,e183fbaddcf322796e79c68372b7ac76,2,3,3,mei_final,0.6667,0.6667

@@ -1,0 +1,9 @@
+project,pr,clone_fingerprint,start_commit,end_commit,total_commits,categoria,distancia,duracao
+textbringer,118,957b475b49b84d956722eeef696d488f,3,4,8,mei,0.375,0.25
+textbringer,118,0cf37a8ff64142670185ed5ed375e566,3,4,8,mei,0.375,0.25
+textbringer,118,957b475b49b84d956722eeef696d488f,3,4,8,mei,0.375,0.25
+textbringer,118,0cf37a8ff64142670185ed5ed375e566,3,4,8,mei,0.375,0.25
+textbringer,118,0cf37a8ff64142670185ed5ed375e566,5,5,8,unique_mei,0.625,0.125
+textbringer,118,0cf37a8ff64142670185ed5ed375e566,5,5,8,unique_mei,0.625,0.125
+textbringer,118,572a1210ee9112427786c45171e11ec4,6,8,8,mei_final,0.75,0.375
+textbringer,118,572a1210ee9112427786c45171e11ec4,6,8,8,mei_final,0.75,0.375

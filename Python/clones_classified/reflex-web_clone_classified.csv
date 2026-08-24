@@ -1,0 +1,12 @@
+project,pr,clone_fingerprint,start_commit,end_commit,total_commits,categoria,distancia,duracao
+reflex-web,1435,bc49cb39c98356a64a31af1f652dbe33,1,4,7,ini_mei,0.0,0.5714
+reflex-web,1435,bc49cb39c98356a64a31af1f652dbe33,1,4,7,ini_mei,0.0,0.5714
+reflex-web,1435,bc49cb39c98356a64a31af1f652dbe33,5,7,7,mei_final,0.7143,0.4286
+reflex-web,1435,bc49cb39c98356a64a31af1f652dbe33,5,7,7,mei_final,0.7143,0.4286
+reflex-web,1445,00ba1f5c2b342a82f93175d10b16a531,3,4,4,mei_final,0.75,0.5
+reflex-web,1445,00ba1f5c2b342a82f93175d10b16a531,3,4,4,mei_final,0.75,0.5
+reflex-web,1453,a998ce8249ef25aa4069b55e9249bced,7,22,30,mei,0.2333,0.5333
+reflex-web,1453,a998ce8249ef25aa4069b55e9249bced,7,22,30,mei,0.2333,0.5333
+reflex-web,1453,a998ce8249ef25aa4069b55e9249bced,23,30,30,mei_final,0.7667,0.2667
+reflex-web,1453,a998ce8249ef25aa4069b55e9249bced,23,30,30,mei_final,0.7667,0.2667
+reflex-web,1458,7b7be769bf642aa0fa3b880639116b6f,4,6,6,mei_final,0.6667,0.5

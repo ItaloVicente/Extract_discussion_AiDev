@@ -1,0 +1,7 @@
+project,pr,clone_fingerprint,start_commit,end_commit,total_commits,categoria,distancia,duracao
+ApplicationInsights-Java,4252,5ebbc18f470ebb338c679e6bd046c773,3,3,3,unique_final,1.0,0.3333
+ApplicationInsights-Java,4252,5ebbc18f470ebb338c679e6bd046c773,3,3,3,unique_final,1.0,0.3333
+ApplicationInsights-Java,4257,8946e59a3c866b79d93e9f37a08074e8,5,5,11,unique_mei,0.4545,0.0909
+ApplicationInsights-Java,4257,3a6321ed9b552dabd103473e1c3d6ae2,5,5,11,unique_mei,0.4545,0.0909
+ApplicationInsights-Java,4257,8946e59a3c866b79d93e9f37a08074e8,5,5,11,unique_mei,0.4545,0.0909
+ApplicationInsights-Java,4257,3a6321ed9b552dabd103473e1c3d6ae2,5,5,11,unique_mei,0.4545,0.0909

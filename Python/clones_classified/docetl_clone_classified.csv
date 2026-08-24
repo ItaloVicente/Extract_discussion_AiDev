@@ -1,0 +1,14 @@
+project,pr,clone_fingerprint,start_commit,end_commit,total_commits,categoria,distancia,duracao
+docetl,377,95e377a329106af471350cd06e2ef47c,1,1,2,unique_ini,0.0,0.5
+docetl,377,95e377a329106af471350cd06e2ef47c,1,1,2,unique_ini,0.0,0.5
+docetl,377,92eb5a77d4105f5e57a9f19346a7574a,1,1,2,unique_ini,0.0,0.5
+docetl,377,92eb5a77d4105f5e57a9f19346a7574a,1,1,2,unique_ini,0.0,0.5
+docetl,377,403002ecf07ac740cb7cb58ec1096bf7,1,2,2,ini_mei_final,0.0,1.0
+docetl,377,96494d424443a96ffdc925467c4094a8,1,2,2,ini_mei_final,0.0,1.0
+docetl,377,96494d424443a96ffdc925467c4094a8,1,2,2,ini_mei_final,0.0,1.0
+docetl,377,3a033201837a6203c4c6a5dbd2d2be4f,1,2,2,ini_mei_final,0.0,1.0
+docetl,377,403002ecf07ac740cb7cb58ec1096bf7,1,2,2,ini_mei_final,0.0,1.0
+docetl,377,3a033201837a6203c4c6a5dbd2d2be4f,1,2,2,ini_mei_final,0.0,1.0
+docetl,377,92eb5a77d4105f5e57a9f19346a7574a,2,2,2,unique_final,1.0,0.5
+docetl,377,95e377a329106af471350cd06e2ef47c,2,2,2,unique_final,1.0,0.5
+docetl,377,95e377a329106af471350cd06e2ef47c,2,2,2,unique_final,1.0,0.5

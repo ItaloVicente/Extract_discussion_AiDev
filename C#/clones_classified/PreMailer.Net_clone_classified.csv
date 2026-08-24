@@ -1,0 +1,10 @@
+project,pr,clone_fingerprint,start_commit,end_commit,total_commits,categoria,distancia,duracao
+PreMailer.Net,424,f8c29bd9ce6eb101d652c79bc78058f9,5,5,9,unique_mei,0.5556,0.1111
+PreMailer.Net,424,f8c29bd9ce6eb101d652c79bc78058f9,5,5,9,unique_mei,0.5556,0.1111
+PreMailer.Net,424,04888f7fce53472ffc71f5bf46e2ea6b,4,9,9,mei_final,0.4444,0.6667
+PreMailer.Net,424,5425e4d1ad40aaa313f286561ccf8dfe,8,9,9,mei_final,0.8889,0.2222
+PreMailer.Net,424,5425e4d1ad40aaa313f286561ccf8dfe,8,9,9,mei_final,0.8889,0.2222
+PreMailer.Net,427,b433eb5be200d9d9ecaf972600f9418f,1,1,2,unique_ini,0.0,0.5
+PreMailer.Net,427,557524df588b0bf1c25297ae23b7cc88,1,1,2,unique_ini,0.0,0.5
+PreMailer.Net,427,b433eb5be200d9d9ecaf972600f9418f,1,1,2,unique_ini,0.0,0.5
+PreMailer.Net,427,557524df588b0bf1c25297ae23b7cc88,1,1,2,unique_ini,0.0,0.5

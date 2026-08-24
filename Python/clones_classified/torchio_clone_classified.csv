@@ -1,0 +1,5 @@
+project,pr,clone_fingerprint,start_commit,end_commit,total_commits,categoria,distancia,duracao
+torchio,1330,643fdcaa3cdb098223e283f139b06180,1,1,5,unique_ini,0.0,0.2
+torchio,1330,643fdcaa3cdb098223e283f139b06180,2,2,5,unique_mei,0.4,0.2
+torchio,1330,643fdcaa3cdb098223e283f139b06180,3,4,5,mei,0.6,0.4
+torchio,1330,643fdcaa3cdb098223e283f139b06180,5,5,5,unique_final,1.0,0.2

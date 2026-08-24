@@ -1,0 +1,9 @@
+project,pr,clone_fingerprint,start_commit,end_commit,total_commits,categoria,distancia,duracao
+MoviePilot,4566,5fd9a3fcb9ddf9d8494d05e74eb941dc,1,1,5,unique_ini,0.0,0.2
+MoviePilot,4566,5fd9a3fcb9ddf9d8494d05e74eb941dc,1,1,5,unique_ini,0.0,0.2
+MoviePilot,4566,d4e8de0253857e8aaebb7405973ec262,2,2,5,unique_mei,0.4,0.2
+MoviePilot,4566,d4e8de0253857e8aaebb7405973ec262,2,2,5,unique_mei,0.4,0.2
+MoviePilot,4566,6cd9579277140ed47c285a271bd99360,3,3,5,unique_mei,0.6,0.2
+MoviePilot,4566,6cd9579277140ed47c285a271bd99360,3,3,5,unique_mei,0.6,0.2
+MoviePilot,4566,4c6b92e411c0591eabfd6dcdec2c09e5,5,5,5,unique_final,1.0,0.2
+MoviePilot,4566,4c6b92e411c0591eabfd6dcdec2c09e5,5,5,5,unique_final,1.0,0.2

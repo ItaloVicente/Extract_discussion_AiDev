@@ -1,0 +1,11 @@
+project,pr,clone_fingerprint,start_commit,end_commit,total_commits,categoria,distancia,duracao
+azure-kusto-python,583,5b5ecc19fe37c0dc53ee8dd2906e4d3c,3,4,7,mei,0.4286,0.2857
+azure-kusto-python,583,5b5ecc19fe37c0dc53ee8dd2906e4d3c,3,4,7,mei,0.4286,0.2857
+azure-kusto-python,583,fea1f16b3d0c15bcada8f5d1d5d77570,6,6,7,unique_mei,0.8571,0.1429
+azure-kusto-python,583,8cdb9c2386fccf60271e1e8e294a3778,6,6,7,unique_mei,0.8571,0.1429
+azure-kusto-python,583,fea1f16b3d0c15bcada8f5d1d5d77570,6,6,7,unique_mei,0.8571,0.1429
+azure-kusto-python,583,916226707a559fefdc731e83a70f22fd,6,6,7,unique_mei,0.8571,0.1429
+azure-kusto-python,583,8cdb9c2386fccf60271e1e8e294a3778,6,6,7,unique_mei,0.8571,0.1429
+azure-kusto-python,583,916226707a559fefdc731e83a70f22fd,6,6,7,unique_mei,0.8571,0.1429
+azure-kusto-python,583,3ba58eb87c17fb0b7bc0e829cc8a3296,6,6,7,unique_mei,0.8571,0.1429
+azure-kusto-python,583,3ba58eb87c17fb0b7bc0e829cc8a3296,6,6,7,unique_mei,0.8571,0.1429

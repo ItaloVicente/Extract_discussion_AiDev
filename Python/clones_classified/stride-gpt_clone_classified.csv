@@ -1,0 +1,7 @@
+project,pr,clone_fingerprint,start_commit,end_commit,total_commits,categoria,distancia,duracao
+stride-gpt,72,24c21666498cadeb97887936eccaaf60,1,1,3,unique_ini,0.0,0.3333
+stride-gpt,72,97f5e0fa542b19e28fac15b2e71b7fd1,1,1,3,unique_ini,0.0,0.3333
+stride-gpt,72,c4d8dd9a1c220520b6a4cba4e7c3d4bf,1,1,3,unique_ini,0.0,0.3333
+stride-gpt,72,97f5e0fa542b19e28fac15b2e71b7fd1,2,3,3,mei_final,0.6667,0.6667
+stride-gpt,72,24c21666498cadeb97887936eccaaf60,2,3,3,mei_final,0.6667,0.6667
+stride-gpt,72,c4d8dd9a1c220520b6a4cba4e7c3d4bf,2,3,3,mei_final,0.6667,0.6667

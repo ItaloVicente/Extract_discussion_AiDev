@@ -1,0 +1,10 @@
+project,pr,clone_fingerprint,start_commit,end_commit,total_commits,categoria,distancia,duracao
+msbuild,11993,7a7585f8a8ed9f168720f4899a59a3a2,4,4,7,unique_mei,0.5714,0.1429
+msbuild,11993,7a7585f8a8ed9f168720f4899a59a3a2,4,4,7,unique_mei,0.5714,0.1429
+msbuild,11993,17e72fb27ef5012755fb2e87ec769bc1,5,5,7,unique_mei,0.7143,0.1429
+msbuild,11993,17e72fb27ef5012755fb2e87ec769bc1,5,5,7,unique_mei,0.7143,0.1429
+msbuild,11993,540241dc31fe236f8bb32d2f62b6d591,3,7,7,mei_final,0.4286,0.7143
+msbuild,11993,6ec2f0287a623b8936b7f857e6137567,3,7,7,mei_final,0.4286,0.7143
+msbuild,11993,ac431c428af7346746b19524f49b58bd,3,7,7,mei_final,0.4286,0.7143
+msbuild,11993,66a2b769d83f8f12267d1c93763cd74f,6,7,7,mei_final,0.8571,0.2857
+msbuild,11993,66a2b769d83f8f12267d1c93763cd74f,6,7,7,mei_final,0.8571,0.2857

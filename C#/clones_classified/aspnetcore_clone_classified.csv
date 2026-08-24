@@ -1,0 +1,12 @@
+project,pr,clone_fingerprint,start_commit,end_commit,total_commits,categoria,distancia,duracao
+aspnetcore,62703,807ebb0e669b6090cd0496400299b387,1,8,8,ini_mei_final,0.0,1.0
+aspnetcore,62703,2a20f1a1f2e8f6abe51baa80da41a816,1,8,8,ini_mei_final,0.0,1.0
+aspnetcore,62703,1ae4272f398a869e94b1d2fb34ee5070,1,8,8,ini_mei_final,0.0,1.0
+aspnetcore,62703,238a234807c5e3f7c576fb2378706e86,1,8,8,ini_mei_final,0.0,1.0
+aspnetcore,62703,e25f3a7f79340b7d2d2ac73524acd96d,2,8,8,mei_final,0.25,0.875
+aspnetcore,62703,1ae4272f398a869e94b1d2fb34ee5070,2,8,8,mei_final,0.25,0.875
+aspnetcore,62703,238a234807c5e3f7c576fb2378706e86,2,8,8,mei_final,0.25,0.875
+aspnetcore,62703,807ebb0e669b6090cd0496400299b387,2,8,8,mei_final,0.25,0.875
+aspnetcore,62703,e25f3a7f79340b7d2d2ac73524acd96d,2,8,8,mei_final,0.25,0.875
+aspnetcore,62703,2a20f1a1f2e8f6abe51baa80da41a816,2,8,8,mei_final,0.25,0.875
+aspnetcore,62703,e25f3a7f79340b7d2d2ac73524acd96d,2,8,8,mei_final,0.25,0.875

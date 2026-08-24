@@ -1,0 +1,9 @@
+project,pr,clone_fingerprint,start_commit,end_commit,total_commits,categoria,distancia,duracao
+issue-metrics,540,5fbaed961fc690653b208f25afb6e66f,1,3,7,ini_mei,0.0,0.4286
+issue-metrics,540,5fbaed961fc690653b208f25afb6e66f,1,3,7,ini_mei,0.0,0.4286
+issue-metrics,540,94eb7a38138317854b729172790105ff,4,6,7,mei,0.5714,0.4286
+issue-metrics,540,ac285cd009bd47d90a0169e07bbfdcd0,1,7,7,ini_mei_final,0.0,1.0
+issue-metrics,540,ac285cd009bd47d90a0169e07bbfdcd0,1,7,7,ini_mei_final,0.0,1.0
+issue-metrics,540,ac285cd009bd47d90a0169e07bbfdcd0,1,7,7,ini_mei_final,0.0,1.0
+issue-metrics,540,94eb7a38138317854b729172790105ff,4,7,7,mei_final,0.5714,0.5714
+issue-metrics,540,94eb7a38138317854b729172790105ff,7,7,7,unique_final,1.0,0.1429
