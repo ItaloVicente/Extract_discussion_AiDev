@@ -31,8 +31,8 @@ def load_and_index_hf_datasets():
 
 
 def get_unique_prs_from_csvs():
-    """Lê as pastas locais e retorna uma lista única de dicionários com os dados da PR."""
-    pr_list = []
+    """Lê as pastas locais e mapeia se a PR possui clones não mergeados."""
+    pr_dict = {}
     print("🔎 Mapeando Pull Requests nos CSVs locais...")
 
     for lang in LANGUAGES:
@@ -59,18 +59,34 @@ def get_unique_prs_from_csvs():
                     if df_csv.empty:
                         continue
 
-                    # Extrair pares únicos
-                    unique_pairs = df_csv[['project', 'pr']].drop_duplicates()
-                    for _, row in unique_pairs.iterrows():
-                        pr_list.append({
-                            "lang": lang,
-                            "project": str(row['project']),
-                            "pr_number": int(row['pr'])
-                        })
+                    # Agrupa por PR para analisar todos os clones dela
+                    grouped = df_csv.groupby(['project', 'pr'])
+                    for (proj, pr_num), group in grouped:
+                        # Se ALGUMA categoria não tiver a palavra 'final', então o clone não chegou ao merge
+                        has_unmerged = any('final' not in str(cat) for cat in group['categoria'])
+
+                        key = (lang, str(proj), int(pr_num))
+                        if key not in pr_dict:
+                            pr_dict[key] = has_unmerged
+                        else:
+                            # Se já existe, atualiza para True se encontrar algum não mergeado
+                            if has_unmerged:
+                                pr_dict[key] = True
+
             except Exception as e:
                 print(f"⚠️ Erro ao ler o CSV {file}: {e}")
 
-    unique_pr_list = [dict(t) for t in {tuple(d.items()) for d in pr_list}]
+    # Converte o dicionário auxiliar para a lista final
+    unique_pr_list = [
+        {
+            "lang": k[0],
+            "project": k[1],
+            "pr_number": k[2],
+            "has_unmerged_clone": "Yes" if v else "No"
+        }
+        for k, v in pr_dict.items()
+    ]
+
     print(f"✅ Encontradas {len(unique_pr_list)} Pull Requests únicas para extração.")
     return unique_pr_list
 
@@ -175,12 +191,16 @@ def main():
         print("🚨 Nenhuma PR encontrada para processamento. Encerrando.")
         return
 
+    # Dicionário para armazenar os dados do Excel por linguagem
+    excel_data = {lang: [] for lang in LANGUAGES}
+
     print("🚀 Iniciando extração e formatação de discussões...")
 
     for item in tqdm(prs_to_process, desc="Gerando arquivos Markdown"):
         lang = item['lang']
         project = item['project']
         pr_number = item['pr_number']
+        has_unmerged_clone = item['has_unmerged_clone']
 
         matched_pr = df_pr[
             (df_pr['number'] == pr_number) &
@@ -191,7 +211,9 @@ def main():
             continue
 
         pr_row = matched_pr.iloc[0]
+        pr_url = pr_row.get('html_url', '')
 
+        # Gera e salva o conteúdo Markdown
         md_content = create_markdown_content(
             project, pr_number, pr_row,
             df_pr_comments, df_pr_reviews, df_pr_rev_comments
@@ -204,7 +226,33 @@ def main():
         with open(file_path, "w", encoding="utf-8") as f:
             f.write(md_content)
 
-    print(f"\n🎉 Processo concluído! Arquivos salvos na pasta '{OUTPUT_BASE_DIR}/'.")
+        # Adiciona a linha ao buffer do Excel
+        excel_data[lang].append({
+            "Project": project,
+            "PR": pr_number,
+            "Has Unmerged Clone": has_unmerged_clone,
+            "URL": pr_url,
+            "Has Discussion?": ""
+        })
+
+    # ==========================================
+    # GERAÇÃO DO ARQUIVO EXCEL
+    # ==========================================
+    print("\n📊 Gerando arquivo Excel com o resumo...")
+    excel_path = os.path.join(OUTPUT_BASE_DIR, "Discussions_Summary.xlsx")
+
+    with pd.ExcelWriter(excel_path, engine='openpyxl') as writer:
+        for lang in LANGUAGES:
+            df_lang = pd.DataFrame(excel_data[lang])
+
+            # Se não houver dados para a linguagem, cria uma aba vazia com as colunas corretas
+            if df_lang.empty:
+                df_lang = pd.DataFrame(columns=["Project", "PR", "Has Unmerged Clone", "URL", "Has Discussion?"])
+
+            df_lang.to_excel(writer, sheet_name=lang, index=False)
+
+    print(f"✅ Arquivos Markdown salvos na pasta '{OUTPUT_BASE_DIR}/'.")
+    print(f"✅ Planilha Excel salva em: {excel_path}")
 
 
 if __name__ == "__main__":
