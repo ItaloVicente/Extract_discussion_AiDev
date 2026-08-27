@@ -1,0 +1,44 @@
+# 🔍 Clone Analysis | Project: onnxscript | PR: #2437
+
+- **Commit SHA:** `3d06403e836b9c47f97e4bd04e8c57838cb3dac9`
+- **Clone Fingerprint:** `69ee2b8060d93a6a18695d0eb2f2cc0f`
+- **Categoria:** `unique_ini`
+
+---
+
+## 🧑‍💻 Clone Par 1
+**File:** `onnxscript/rewriter/fuse_relus_clips_test.py`
+**Lines:** 194 to 204
+
+```text
+def test_successful_fuse_successive_relu_clip_no_min(self, _, nodes):
+        model = ir.from_onnx_text(f"""
+            < ir_version: 10, opset_import: ["" : 20] >
+            test_model (float[N, 32, 14] X) => (float [N, ?, ?] Y)
+            <float max = {{6.0}}>
+            {{
+                {nodes}
+            }}
+        """)
+        self.run_test(model, expected_op_types=["Clip"])
+```
+
+---
+
+## 🧑‍💻 Clone Par 2
+**File:** `onnxscript/rewriter/fuse_relus_clips_test.py`
+**Lines:** 225 to 235
+
+```text
+def test_fail_fuse_successive_relu_clip_non_initializers(self, _, nodes, rewrite_rule):
+        model = ir.from_onnx_text(f"""
+            < ir_version: 10, opset_import: ["" : 20] >
+            test_model (float[N, 32, 14] X) => (float [N, ?, ?] Y)
+            {{
+                min = ReduceMean<keepdims=0>(X)
+                {nodes}
+            }}
+        """)
+        self.run_failed_condition_test(model, rewrite_rule, "is not a constant.")
+```
+

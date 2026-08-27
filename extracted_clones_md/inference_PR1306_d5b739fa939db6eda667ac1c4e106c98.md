@@ -1,0 +1,53 @@
+# 🔍 Clone Analysis | Project: inference | PR: #1306
+
+- **Commit SHA:** `4d587e224437f91d460c6f00aab6d21e1b8f0f8a`
+- **Clone Fingerprint:** `d5b739fa939db6eda667ac1c4e106c98`
+- **Categoria:** `ini_mei_final`
+
+---
+
+## 🧑‍💻 Clone Par 1
+**File:** `tests/workflows/unit_tests/core_steps/formatters/test_json_parser.py`
+**Lines:** 91 to 106
+
+```text
+def test_block_run_when_valid_json_given_and_all_fields_declared() -> None:
+    # given
+    raw_json = json.dumps({"a": "1", "b": "2"})
+    block = JSONParserBlockV1()
+
+    # when
+    result = block.run(raw_json=raw_json, expected_fields=["a", "b"])
+
+    # then
+    assert result == {
+        "error_status": False,
+        "a": "1",
+        "b": "2",
+    }
+```
+
+---
+
+## 🧑‍💻 Clone Par 2
+**File:** `tests/workflows/unit_tests/core_steps/formatters/test_json_parser.py`
+**Lines:** 170 to 186
+
+```text
+def test_block_run_when_json_in_markdown_provided() -> None:
+    # given
+    raw_json = json.dumps({"a": "1", "b": "2"})
+    raw_json = f"```json\n{raw_json}\n```"
+    block = JSONParserBlockV1()
+
+    # when
+    result = block.run(raw_json=raw_json, expected_fields=["a", "b"])
+
+    # then
+    assert result == {
+        "error_status": False,
+        "a": "1",
+        "b": "2",
+    }
+```
+

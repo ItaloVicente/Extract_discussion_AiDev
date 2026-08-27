@@ -1,0 +1,38 @@
+# 🔍 Clone Analysis | Project: keep | PR: #5002
+
+- **Commit SHA:** `ecaa3837e067fc8b5507950b4f207aaf6f65333a`
+- **Clone Fingerprint:** `b6a4e475b1d4666f9f6fbbd0fc84ce8d`
+- **Categoria:** `mei`
+
+---
+
+## 🧑‍💻 Clone Par 1
+**File:** `monitor_pr.py`
+**Lines:** 34 to 41
+
+```text
+def run_command(cmd):
+    """Run a shell command and return output"""
+    try:
+        result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+        return result.stdout, result.stderr, result.returncode
+    except Exception as e:
+        return "", str(e), 1
+```
+
+---
+
+## 🧑‍💻 Clone Par 2
+**File:** `monitor_column_config.py`
+**Lines:** 36 to 43
+
+```text
+def run_command(cmd):
+    """Run a shell command and return output"""
+    try:
+        result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+        return result.stdout, result.stderr, result.returncode
+    except Exception as e:
+        return "", str(e), 1
+```
+

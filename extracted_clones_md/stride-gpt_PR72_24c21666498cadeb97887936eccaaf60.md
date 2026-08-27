@@ -1,0 +1,166 @@
+# 🔍 Clone Analysis | Project: stride-gpt | PR: #72
+
+- **Commit SHA:** `45b06aba297dde0c568e4fc130eb149462ee933e`
+- **Clone Fingerprint:** `24c21666498cadeb97887936eccaaf60`
+- **Categoria:** `unique_ini`
+
+---
+
+## 🧑‍💻 Clone Par 1
+**File:** `threat_model.py`
+**Lines:** 301 to 374
+
+```text
+def get_threat_model_google(google_api_key, google_model, prompt):
+    # Create a client with the Google API key
+    client = google_genai.Client(api_key=google_api_key)
+    
+    # Set up safety settings to allow security content
+    safety_settings = [
+        google_genai.types.SafetySetting(
+            category=google_genai.types.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+            threshold=google_genai.types.HarmBlockThreshold.BLOCK_NONE
+        ),
+        google_genai.types.SafetySetting(
+            category=google_genai.types.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+            threshold=google_genai.types.HarmBlockThreshold.BLOCK_NONE
+        ),
+        google_genai.types.SafetySetting(
+            category=google_genai.types.HarmCategory.HARM_CATEGORY_HARASSMENT,
+            threshold=google_genai.types.HarmBlockThreshold.BLOCK_NONE
+        ),
+        google_genai.types.SafetySetting(
+            category=google_genai.types.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+            threshold=google_genai.types.HarmBlockThreshold.BLOCK_NONE
+        )
+    ]
+    
+    # Check if we're using a Gemini 2.5 model (which supports thinking capabilities)
+    is_gemini_2_5 = "gemini-2.5" in google_model.lower()
+    
+    try:
+        from google.genai import types as google_types
+        if is_gemini_2_5:
+            config = google_types.GenerateContentConfig(
+                response_mime_type='application/json',
+                safety_settings=safety_settings,
+                thinking_config=google_types.ThinkingConfig(thinking_budget=1024)
+            )
+        else:
+            config = google_types.GenerateContentConfig(
+                response_mime_type='application/json',
+                safety_settings=safety_settings
+            )
+        
+        # Generate content using the configured settings
+        response = client.models.generate_content(
+            model=google_model,
+            contents=prompt,
+            config=config
+        )
+        
+        # Extract Gemini 2.5 'thinking' content if present
+        thinking_content = []
+        for candidate in getattr(response, 'candidates', []):
+            content = getattr(candidate, 'content', None)
+            if content and hasattr(content, 'parts'):
+                for part in content.parts:
+                    if hasattr(part, 'thought') and part.thought:
+                        thinking_content.append(str(part.thought))
+        if thinking_content:
+            joined_thinking = "\n\n".join(thinking_content)
+            st.session_state['last_thinking_content'] = joined_thinking
+        
+    except Exception as e:
+        st.error(f"Error generating content with Google AI: {str(e)}")
+        return None
+    
+    try:
+        # Parse the response text as JSON
+        response_content = json.loads(response.text)
+    except json.JSONDecodeError:
+        st.error("Failed to parse JSON response from Google AI")
+        return None
+        
+    return response_content
+
+# Function to get threat model from the Mistral response.
+```
+
+---
+
+## 🧑‍💻 Clone Par 2
+**File:** `mitigations.py`
+**Lines:** 88 to 155
+
+```text
+def get_mitigations_google(google_api_key, google_model, prompt):
+    client = google_genai.Client(api_key=google_api_key)
+    
+    safety_settings = [
+        google_genai.types.SafetySetting(
+            category=google_genai.types.HarmCategory.HARM_CATEGORY_DANGEROUS_CONTENT,
+            threshold=google_genai.types.HarmBlockThreshold.BLOCK_NONE
+        ),
+        google_genai.types.SafetySetting(
+            category=google_genai.types.HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+            threshold=google_genai.types.HarmBlockThreshold.BLOCK_NONE
+        ),
+        google_genai.types.SafetySetting(
+            category=google_genai.types.HarmCategory.HARM_CATEGORY_HARASSMENT,
+            threshold=google_genai.types.HarmBlockThreshold.BLOCK_NONE
+        ),
+        google_genai.types.SafetySetting(
+            category=google_genai.types.HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+            threshold=google_genai.types.HarmBlockThreshold.BLOCK_NONE
+        )
+    ]
+    
+    system_instruction = "You are a helpful assistant that provides threat mitigation strategies in Markdown format."
+    is_gemini_2_5 = "gemini-2.5" in google_model.lower()
+    
+    try:
+        from google.genai import types as google_types
+        if is_gemini_2_5:
+            config = google_types.GenerateContentConfig(
+                system_instruction=system_instruction,
+                safety_settings=safety_settings,
+                thinking_config=google_types.ThinkingConfig(thinking_budget=1024)
+            )
+        else:
+            config = google_types.GenerateContentConfig(
+                system_instruction=system_instruction,
+                safety_settings=safety_settings
+            )
+        response = client.models.generate_content(
+            model=google_model,
+            contents=prompt,
+            config=config
+        )
+        # Extract Gemini 2.5 'thinking' content if present
+        thinking_content = []
+        for candidate in getattr(response, 'candidates', []):
+            content = getattr(candidate, 'content', None)
+            if content and hasattr(content, 'parts'):
+                for part in content.parts:
+                    if hasattr(part, 'thought') and part.thought:
+                        thinking_content.append(str(part.thought))
+        if thinking_content:
+            joined_thinking = "\n\n".join(thinking_content)
+            st.session_state['last_thinking_content'] = joined_thinking
+    except Exception as e:
+        st.error(f"Error generating mitigations with Google AI: {str(e)}")
+        return f"""
+## Error Generating Mitigations
+
+**API Error:** {str(e)}
+
+Please try again or select a different model provider.
+"""
+    
+    mitigations = response.text
+    return mitigations
+
+# Function to get mitigations from the Mistral model's response.
+```
+

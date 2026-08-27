@@ -1,0 +1,64 @@
+# 🔍 Clone Analysis | Project: skypilot | PR: #6067
+
+- **Commit SHA:** `7ee65ae56627134e5b272857de47bec5b607abbd`
+- **Clone Fingerprint:** `0fc572bac711ddb46841e11b9e8cdb11`
+- **Categoria:** `unique_ini`
+
+---
+
+## 🧑‍💻 Clone Par 1
+**File:** `tests/unit_tests/test_sky_cost_report.py`
+**Lines:** 52 to 72
+
+```text
+def test_show_cost_report_table_with_days(self):
+        """Test show_cost_report_table displays days information."""
+        mock_records = []
+        
+        with mock.patch('click.echo') as mock_echo:
+            with mock.patch('sky.utils.log_utils.create_table') as mock_create_table:
+                mock_table = mock.Mock()
+                mock_create_table.return_value = mock_table
+                
+                status_utils.show_cost_report_table(
+                    mock_records, 
+                    show_all=False, 
+                    days=7
+                )
+                
+                # Should display days information in header
+                mock_echo.assert_called()
+                echo_calls = [call[0][0] for call in mock_echo.call_args_list]
+                header_with_days = any('(last 7 days)' in call for call in echo_calls)
+                self.assertTrue(header_with_days, "Should display days in header")
+```
+
+---
+
+## 🧑‍💻 Clone Par 2
+**File:** `tests/unit_tests/test_sky_cost_report.py`
+**Lines:** 73 to 93
+
+```text
+def test_show_cost_report_table_without_days(self):
+        """Test show_cost_report_table without days information."""
+        mock_records = []
+        
+        with mock.patch('click.echo') as mock_echo:
+            with mock.patch('sky.utils.log_utils.create_table') as mock_create_table:
+                mock_table = mock.Mock()
+                mock_create_table.return_value = mock_table
+                
+                status_utils.show_cost_report_table(
+                    mock_records, 
+                    show_all=False, 
+                    days=None
+                )
+                
+                # Should not display days information in header
+                mock_echo.assert_called()
+                echo_calls = [call[0][0] for call in mock_echo.call_args_list]
+                header_with_days = any('(last' in call for call in echo_calls)
+                self.assertFalse(header_with_days, "Should not display days in header when None")
+```
+

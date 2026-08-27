@@ -1,0 +1,70 @@
+# 🔍 Clone Analysis | Project: fastmcp | PR: #1190
+
+- **Commit SHA:** `6ad387d036ebd6ec9d85bf07d427a5a22262210d`
+- **Clone Fingerprint:** `50dcc1f5b6451803a3ba149a8cdb5ce1`
+- **Categoria:** `ini_mei_final`
+
+---
+
+## 🧑‍💻 Clone Par 1
+**File:** `tests/cli/test_run_with_uv.py`
+**Lines:** 33 to 55
+
+```text
+def test_run_with_uv_python_version(self, mock_run):
+        """Test run_with_uv with Python version."""
+        mock_run.return_value = Mock(returncode=0)
+
+        with pytest.raises(SystemExit) as exc_info:
+            run_with_uv("server.py", python_version="3.11")
+
+        assert exc_info.value.code == 0
+
+        cmd = mock_run.call_args[0][0]
+        expected = [
+            "uv",
+            "run",
+            "--python",
+            "3.11",
+            "--with",
+            "fastmcp",
+            "fastmcp",
+            "run",
+            "server.py",
+        ]
+        assert cmd == expected
+```
+
+---
+
+## 🧑‍💻 Clone Par 2
+**File:** `tests/cli/test_run_with_uv.py`
+**Lines:** 82 to 106
+
+```text
+def test_run_with_uv_with_packages(self, mock_run):
+        """Test run_with_uv with additional packages."""
+        mock_run.return_value = Mock(returncode=0)
+
+        with pytest.raises(SystemExit) as exc_info:
+            run_with_uv("server.py", with_packages=["pandas", "numpy"])
+
+        assert exc_info.value.code == 0
+
+        cmd = mock_run.call_args[0][0]
+        expected = [
+            "uv",
+            "run",
+            "--with",
+            "fastmcp",
+            "--with",
+            "pandas",
+            "--with",
+            "numpy",
+            "fastmcp",
+            "run",
+            "server.py",
+        ]
+        assert cmd == expected
+```
+

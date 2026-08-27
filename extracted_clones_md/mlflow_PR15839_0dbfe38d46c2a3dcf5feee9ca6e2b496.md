@@ -1,0 +1,42 @@
+# 🔍 Clone Analysis | Project: mlflow | PR: #15839
+
+- **Commit SHA:** `29b762a1aa0994a2a69abe0def9a2a89187ca1db`
+- **Clone Fingerprint:** `0dbfe38d46c2a3dcf5feee9ca6e2b496`
+- **Categoria:** `ini_mei`
+
+---
+
+## 🧑‍💻 Clone Par 1
+**File:** `tests/tracing/test_fluent_classmethod.py`
+**Lines:** 8 to 18
+
+```text
+def test_trace_with_classmethod():
+    class TestModel:
+        @mlflow.trace
+        @classmethod
+        def predict(cls, x, y):
+            return x + y
+
+    result = TestModel.predict(1, 2)
+    assert result == 3
+```
+
+---
+
+## 🧑‍💻 Clone Par 2
+**File:** `tests/tracing/test_fluent_classmethod.py`
+**Lines:** 30 to 40
+
+```text
+def test_trace_with_classmethod_with_params():
+    class TestModel:
+        @mlflow.trace(name="custom_predict", span_type=SpanType.MODEL_INFERENCE)
+        @classmethod
+        def predict(cls, x, y):
+            return x + y
+
+    result = TestModel.predict(1, 2)
+    assert result == 3
+```
+

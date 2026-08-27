@@ -1,0 +1,42 @@
+# 🔍 Clone Analysis | Project: Olive | PR: #1897
+
+- **Commit SHA:** `bba6c9007d6c96dc6ed3467d143a0bcc507e8a54`
+- **Clone Fingerprint:** `16a3da9ced7cbe3c1773fa6d7e3ed5f9`
+- **Categoria:** `mei`
+
+---
+
+## 🧑‍💻 Clone Par 1
+**File:** `test/unit_test/docs/test_version_detection.py`
+**Lines:** 24 to 33
+
+```text
+def test_exact_tag_match(self, mock_run):
+        """Test version detection when HEAD is exactly on a tag."""
+        mock_result = MagicMock()
+        mock_result.returncode = 0
+        mock_result.stdout = "v0.9.1\n"
+        mock_run.return_value = mock_result
+        
+        version = get_git_version()
+        self.assertEqual(version, "0.9.1")
+```
+
+---
+
+## 🧑‍💻 Clone Par 2
+**File:** `test/unit_test/docs/test_version_detection.py`
+**Lines:** 35 to 44
+
+```text
+def test_multiple_tags_at_head(self, mock_run):
+        """Test version detection when HEAD has multiple tags."""
+        mock_result = MagicMock()
+        mock_result.returncode = 0
+        mock_result.stdout = "v0.9.1\nsome-other-tag\n"
+        mock_run.return_value = mock_result
+        
+        version = get_git_version()
+        self.assertEqual(version, "0.9.1")
+```
+

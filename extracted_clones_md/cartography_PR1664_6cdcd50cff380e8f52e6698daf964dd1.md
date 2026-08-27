@@ -1,0 +1,60 @@
+# 🔍 Clone Analysis | Project: cartography | PR: #1664
+
+- **Commit SHA:** `1c682bca16ebc473029e58f1708c3fafc208b912`
+- **Clone Fingerprint:** `6cdcd50cff380e8f52e6698daf964dd1`
+- **Categoria:** `mei_final`
+
+---
+
+## 🧑‍💻 Clone Par 1
+**File:** `cartography/intel/aws/efs.py`
+**Lines:** 136 to 155
+
+```text
+def load_efs_mount_targets(
+    neo4j_session: neo4j.Session,
+    data: List[Dict[str, Any]],
+    region: str,
+    current_aws_account_id: str,
+    aws_update_tag: int,
+) -> None:
+    logger.info(
+        f"Loading Efs {len(data)} mount targets for region '{region}' into graph.",
+    )
+    load(
+        neo4j_session,
+        EfsMountTargetSchema(),
+        data,
+        lastupdated=aws_update_tag,
+        Region=region,
+        AWS_ID=current_aws_account_id,
+    )
+```
+
+---
+
+## 🧑‍💻 Clone Par 2
+**File:** `cartography/intel/aws/efs.py`
+**Lines:** 178 to 197
+
+```text
+def load_efs_access_points(
+    neo4j_session: neo4j.Session,
+    data: List[Dict[str, Any]],
+    region: str,
+    current_aws_account_id: str,
+    aws_update_tag: int,
+) -> None:
+    logger.info(
+        f"Loading Efs {len(data)} access points for region '{region}' into graph.",
+    )
+    load(
+        neo4j_session,
+        EfsAccessPointSchema(),
+        data,
+        lastupdated=aws_update_tag,
+        Region=region,
+        AWS_ID=current_aws_account_id,
+    )
+```
+

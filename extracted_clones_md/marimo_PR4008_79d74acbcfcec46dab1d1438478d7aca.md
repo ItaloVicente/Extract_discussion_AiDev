@@ -1,0 +1,42 @@
+# 🔍 Clone Analysis | Project: marimo | PR: #4008
+
+- **Commit SHA:** `fbc7795873c8a569f7bb3fb1488c550c7e8f7131`
+- **Clone Fingerprint:** `79d74acbcfcec46dab1d1438478d7aca`
+- **Categoria:** `unique_ini`
+
+---
+
+## 🧑‍💻 Clone Par 1
+**File:** `tests/_ai/llm/_impl.py`
+**Lines:** 127 to 137
+
+```text
+def test_require_api_key_missing(self, mock_get_context: MagicMock) -> None:
+        """Test _require_api_key with missing key."""
+        mock_context = MagicMock()
+        mock_context.marimo_config = {"ai": {"google": {"api_key": ""}}}
+        mock_get_context.return_value = mock_context
+
+        model = google("gemini-pro")
+        with pytest.raises(ValueError):
+            _ = model._require_api_key
+```
+
+---
+
+## 🧑‍💻 Clone Par 2
+**File:** `tests/_ai/llm/_impl.py`
+**Lines:** 400 to 410
+
+```text
+def test_require_api_key_missing(self, mock_get_context: MagicMock) -> None:
+        """Test _require_api_key with missing key."""
+        mock_context = MagicMock()
+        mock_context.marimo_config = {"ai": {"open_ai": {"api_key": ""}}}
+        mock_get_context.return_value = mock_context
+
+        model = openai("gpt-4")
+        with pytest.raises(ValueError):
+            _ = model._require_api_key
+```
+
