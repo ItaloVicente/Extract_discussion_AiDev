@@ -1,0 +1,48 @@
+Project: onnxscript | PR: 2401 | Commit: c7494a9079172f928a1d774fa9fdcf641406d4eb
+Clone Fingerprint: 343c7587076c82a8b270f072c4770974
+Categoria: unique_final
+
+======================================================================================
+CLONE PAR 1
+File: docs/tutorial/rewriter/examples/erfgelu.py
+Lines: 98 to 114
+
+def apply_rewrite(model):
+    rule = pattern.RewriteRule(
+        erf_gelu_pattern,  # Target Pattern
+        gelu,  # Replacement
+    )
+    model_with_rewrite_applied = onnxscript.rewriter.rewrite(
+        model,
+        pattern_rewrite_rules=[rule],
+    )
+    return model_with_rewrite_applied
+
+
+####################################
+# Rewrite Rule as a Class
+# =====================
+
+======================================================================================
+CLONE PAR 2
+File: docs/tutorial/rewriter/examples/erfgelu.py
+Lines: 147 to 162
+
+def apply_rewrite_with_commute(model):
+    rule = pattern.RewriteRule(
+        erf_gelu_pattern,  # Target Pattern
+        gelu,  # Replacement
+    )
+    # Create a Rewrite Rule Set with commute=True
+    rewrite_rule_set = pattern.RewriteRuleSet([rule], commute=True)
+    # Apply rewrites
+    model_with_rewrite_applied = onnxscript.rewriter.rewrite(
+        model,
+        pattern_rewrite_rules=rewrite_rule_set,
+    )
+    return model_with_rewrite_applied
+
+
+# Rewrite-Simple
+
+======================================================================================

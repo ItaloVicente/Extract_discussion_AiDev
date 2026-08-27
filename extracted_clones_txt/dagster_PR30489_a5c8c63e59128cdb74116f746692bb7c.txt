@@ -1,0 +1,39 @@
+Project: dagster | PR: 30489 | Commit: d4c7683f5da4e1c8669a05331a42bb74a0abcafd
+Clone Fingerprint: a5c8c63e59128cdb74116f746692bb7c
+Categoria: unique_final
+
+======================================================================================
+CLONE PAR 1
+File: python_modules/libraries/dagster-duckdb-pandas/dagster_duckdb_pandas_tests/test_type_handler.py
+Lines: 230 to 242
+
+def daily_partitioned(context: AssetExecutionContext) -> pd.DataFrame:
+    partition = pd.Timestamp(context.partition_key)
+    value = context.op_execution_context.op_config["value"]
+
+    return pd.DataFrame(
+        {
+            "time": [partition, partition, partition],
+            "a": [value, value, value],
+            "b": [4, 5, 6],
+        }
+    )
+
+======================================================================================
+CLONE PAR 2
+File: python_modules/libraries/dagster-deltalake-pandas/dagster_deltalake_pandas_tests/test_type_handler.py
+Lines: 179 to 191
+
+def daily_partitioned(context: AssetExecutionContext) -> pd.DataFrame:
+    partition = datetime.strptime(context.partition_key, DELTA_DATE_FORMAT).date()
+    value = context.op_execution_context.op_config["value"]
+
+    return pd.DataFrame(
+        {
+            "time": [partition, partition, partition],
+            "a": [value, value, value],
+            "b": [4, 5, 6],
+        }
+    )
+
+======================================================================================

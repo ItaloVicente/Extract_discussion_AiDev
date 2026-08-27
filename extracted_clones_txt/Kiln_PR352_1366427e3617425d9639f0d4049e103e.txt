@@ -1,0 +1,33 @@
+Project: Kiln | PR: 352 | Commit: f971c8b92e8dbca2853fe9cfb469fbd514ca1d2e
+Clone Fingerprint: 1366427e3617425d9639f0d4049e103e
+Categoria: mei_final
+
+======================================================================================
+CLONE PAR 1
+File: libs/core/kiln_ai/adapters/test_ml_model_list.py
+Lines: 14 to 22
+
+def test_valid_model_and_provider_returns_provider_mode(self):
+        """Test that valid model and provider returns the provider's structured output mode"""
+        # GPT 4.1 has OpenAI provider with json_schema mode
+        result = default_structured_output_mode_for_model_provider(
+            model_name="gpt_4_1",
+            provider=ModelProviderName.openai,
+        )
+        assert result == StructuredOutputMode.json_schema
+
+======================================================================================
+CLONE PAR 2
+File: libs/core/kiln_ai/adapters/test_ml_model_list.py
+Lines: 87 to 95
+
+def test_empty_disallowed_modes_list(self):
+        """Test that empty disallowed_modes list works correctly"""
+        result = default_structured_output_mode_for_model_provider(
+            model_name="gpt_4_1",
+            provider=ModelProviderName.openai,
+            disallowed_modes=[],
+        )
+        assert result == StructuredOutputMode.json_schema
+
+======================================================================================

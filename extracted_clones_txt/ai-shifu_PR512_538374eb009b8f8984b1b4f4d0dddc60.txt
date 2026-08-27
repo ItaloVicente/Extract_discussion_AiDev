@@ -1,0 +1,35 @@
+Project: ai-shifu | PR: 512 | Commit: 5f6bbd48fa547c9a116f5713ca5a7e68befe51bf
+Clone Fingerprint: 538374eb009b8f8984b1b4f4d0dddc60
+Categoria: unique_final
+
+======================================================================================
+CLONE PAR 1
+File: src/api/flaskr/service/shifu/funcs.py
+Lines: 400 to 410
+
+def get_content_type(filename):
+    extension = filename.rsplit(".", 1)[1].lower()
+    if extension in ["jpg", "jpeg"]:
+        return "image/jpeg"
+    elif extension == "png":
+        return "image/png"
+    elif extension == "gif":
+        return "image/gif"
+    raise_error("FILE.FILE_TYPE_NOT_SUPPORT")
+
+======================================================================================
+CLONE PAR 2
+File: src/api/flaskr/service/user/user.py
+Lines: 165 to 175
+
+def get_content_type(filename):
+    extension = filename.rsplit(".", 1)[1].lower()
+    if extension in ["jpg", "jpeg"]:
+        return "image/jpeg"
+    elif extension == "png":
+        return "image/png"
+    elif extension == "gif":
+        return "image/gif"
+    raise_error("FILE.FILE_TYPE_NOT_SUPPORT")
+
+======================================================================================

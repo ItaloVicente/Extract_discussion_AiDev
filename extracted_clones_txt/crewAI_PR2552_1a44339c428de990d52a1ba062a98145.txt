@@ -1,0 +1,57 @@
+Project: crewAI | PR: 2552 | Commit: 2b4f9185773097d729817769885df35821a49299
+Clone Fingerprint: 1a44339c428de990d52a1ba062a98145
+Categoria: mei
+
+======================================================================================
+CLONE PAR 1
+File: tests/storage/test_mem0_storage.py
+Lines: 86 to 106
+
+def mem0_storage_with_memory_client_using_config_from_crew(mock_mem0_memory_client):
+    """Fixture to create a Mem0Storage instance with mocked dependencies"""
+
+    # We need to patch the MemoryClient before it's instantiated
+    with patch.object(MemoryClient, "__new__", return_value=mock_mem0_memory_client):
+        crew = MockCrew(
+            memory_config={
+                "provider": "mem0",
+                "config": {
+                    "user_id": "test_user",
+                    "api_key": "ABCDEFGH",
+                    "org_id": "my_org_id",
+                    "project_id": "my_project_id",
+                },
+            }
+        )
+
+        mem0_storage = Mem0Storage(type="short_term", crew=crew)
+        return mem0_storage
+
+======================================================================================
+CLONE PAR 2
+File: tests/storage/test_mem0_storage.py
+Lines: 108 to 130
+
+def mem0_storage_with_memory_client_using_explictly_config(mock_mem0_memory_client):
+    """Fixture to create a Mem0Storage instance with mocked dependencies"""
+
+    # We need to patch the MemoryClient before it's instantiated
+    with patch.object(MemoryClient, "__new__", return_value=mock_mem0_memory_client):
+        crew = MockCrew(
+            memory_config={
+                "provider": "mem0",
+                "config": {
+                    "user_id": "test_user",
+                    "api_key": "ABCDEFGH",
+                    "org_id": "my_org_id",
+                    "project_id": "my_project_id",
+                },
+            }
+        )
+
+        new_config = {"provider": "mem0", "config": {"api_key": "new-api-key"}}
+
+        mem0_storage = Mem0Storage(type="short_term", crew=crew, config=new_config)
+        return mem0_storage
+
+======================================================================================

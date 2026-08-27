@@ -1,0 +1,47 @@
+Project: torchio | PR: 1330 | Commit: d7d45133f46eb5ad82586e0759ad7fad2642cfb4
+Clone Fingerprint: 643fdcaa3cdb098223e283f139b06180
+Categoria: unique_ini
+
+======================================================================================
+CLONE PAR 1
+File: tests/transforms/augmentation/test_random_affine_elastic_deformation.py
+Lines: 290 to 305
+
+def test_no_inverse(self):
+        tensor = torch.zeros((1, 2, 2, 2))
+        tensor[0, 1, 1, 1] = 1  # most RAS voxel
+        expected = torch.zeros((1, 2, 2, 2))
+        expected[0, 0, 1, 1] = 1
+        scales = 1, 1, 1
+        degrees = 0, 0, 90  # anterior should go left
+        translation = 0, 0, 0
+        apply_affine = tio.Affine(
+            scales,
+            degrees,
+            translation,
+        )
+        transformed = apply_affine(tensor)
+        self.assert_tensor_almost_equal(transformed, expected)
+
+======================================================================================
+CLONE PAR 2
+File: tests/transforms/augmentation/test_random_affine.py
+Lines: 204 to 219
+
+def test_no_inverse(self):
+        tensor = torch.zeros((1, 2, 2, 2))
+        tensor[0, 1, 1, 1] = 1  # most RAS voxel
+        expected = torch.zeros((1, 2, 2, 2))
+        expected[0, 0, 1, 1] = 1
+        scales = 1, 1, 1
+        degrees = 0, 0, 90  # anterior should go left
+        translation = 0, 0, 0
+        apply_affine = tio.Affine(
+            scales,
+            degrees,
+            translation,
+        )
+        transformed = apply_affine(tensor)
+        self.assert_tensor_almost_equal(transformed, expected)
+
+======================================================================================

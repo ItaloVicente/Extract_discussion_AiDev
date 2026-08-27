@@ -1,0 +1,33 @@
+Project: onnxscript | PR: 2388 | Commit: 9388dd04928e0de8c44279e5a49332eb5aca1421
+Clone Fingerprint: 0d2bcfe2c04126d7910c95a032f46388
+Categoria: unique_final
+
+======================================================================================
+CLONE PAR 1
+File: onnxscript/rewriter/ort_fusions/bias_gelu_test.py
+Lines: 91 to 99
+
+def test_bias_gelu_fusion(
+        self,
+        _,
+        test_data_constructor: OnnxFunction,
+        expected_graph_len: int,
+        expected_op_type: str,
+    ):
+        self._check(test_data_constructor, expected_graph_len, expected_op_type)
+
+======================================================================================
+CLONE PAR 2
+File: onnxscript/rewriter/ort_fusions/bias_gelu_test.py
+Lines: 106 to 115
+
+def test_bias_gelu_fusion_unsupported_attr(
+        self,
+        _,
+        test_data_constructor: OnnxFunction,
+        expected_graph_len: int,
+        expected_op_type: str,
+    ):
+        self._check(test_data_constructor, expected_graph_len, expected_op_type)
+
+======================================================================================

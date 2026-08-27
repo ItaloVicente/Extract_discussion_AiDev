@@ -1,0 +1,31 @@
+Project: cachier | PR: 279 | Commit: 51e62d977a98753a3496eccb92d5f4befaf75b85
+Clone Fingerprint: b3f1b39f78de68bb6334bb823892b856
+Categoria: unique_ini
+
+======================================================================================
+CLONE PAR 1
+File: test_issue.py
+Lines: 7 to 13
+
+def __init__(self, cache_ttl = None):
+        self.counter = 0
+        if cache_ttl is not None:
+            stale_after = datetime.timedelta(seconds=cache_ttl)
+            cachier.set_default_params(stale_after=stale_after)
+            cachier.enable_caching()
+
+======================================================================================
+CLONE PAR 2
+File: debug_test.py
+Lines: 12 to 20
+
+def __init__(self, cache_ttl = None):
+        self.counter = 0
+        if cache_ttl is not None:
+            stale_after = datetime.timedelta(seconds=cache_ttl)
+            # Update stale_after and enable caching
+            cachier.set_global_params(stale_after=stale_after)
+            cachier.enable_caching()
+            print(f"After enabling: {cachier.get_global_params().caching_enabled}")
+
+======================================================================================

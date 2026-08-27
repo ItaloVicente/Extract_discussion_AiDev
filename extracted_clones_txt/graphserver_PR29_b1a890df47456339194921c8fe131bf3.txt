@@ -1,0 +1,35 @@
+Project: graphserver | PR: 29 | Commit: b3f898cf72424cd7d11515d416ebd674cb43e312
+Clone Fingerprint: b1a890df47456339194921c8fe131bf3
+Categoria: unique_ini
+
+======================================================================================
+CLONE PAR 1
+File: pygs/graphserver/core.py
+Lines: 575 to 583
+
+# Use custom property to decode bytes to string for Python 3 compatibility
+    @property
+    def label(self):
+        self.check_destroyed()
+        raw_label = lgs.vGetLabel(c_void_p(self.soul))
+        if raw_label:
+            if isinstance(raw_label, bytes):
+                return raw_label.decode('utf-8')
+            return raw_label
+
+======================================================================================
+CLONE PAR 2
+File: pygs/graphserver/core.py
+Lines: 652 to 660
+
+# Use custom property to decode bytes to string for Python 3 compatibility
+    @property
+    def label(self):
+        self.check_destroyed()
+        raw_label = lgs.sptvGetLabel(c_void_p(self.soul))
+        if raw_label:
+            if isinstance(raw_label, bytes):
+                return raw_label.decode('utf-8')
+            return raw_label
+
+======================================================================================

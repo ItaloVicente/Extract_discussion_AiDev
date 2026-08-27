@@ -1,0 +1,89 @@
+Project: sentry-python | PR: 4459 | Commit: bce0694121e1c694139b1c8f5f18ce96f396184c
+Clone Fingerprint: 24f51927281189ab397e9f0ee48a5862
+Categoria: ini_mei_final
+
+======================================================================================
+CLONE PAR 1
+File: tests/integrations/redis_py_cluster_legacy/test_redis_py_cluster_legacy.py
+Lines: 76 to 113
+
+def test_rediscluster_pipeline(
+    sentry_init, capture_events, send_default_pii, expected_first_ten
+):
+    sentry_init(
+        integrations=[RedisIntegration()],
+        traces_sample_rate=1.0,
+        send_default_pii=send_default_pii,
+    )
+    events = capture_events()
+
+    rc = rediscluster.RedisCluster(connection_pool=MOCK_CONNECTION_POOL)
+    with start_span(name="redis"):
+        pipeline = rc.pipeline()
+        pipeline.get("foo")
+        pipeline.set("bar", 1)
+        pipeline.set("baz", 2)
+        pipeline.execute()
+
+    (event,) = events
+    (span,) = event["spans"]
+    assert span["op"] == "db.redis"
+    assert span["description"] == "redis.pipeline.execute"
+    assert span["data"]["redis.commands.count"] == 3
+    assert span["data"]["redis.commands.first_ten"] == expected_first_ten
+    assert span["data"] == ApproxDict(
+        {
+            SPANDATA.DB_SYSTEM: "redis",
+            SPANDATA.DB_NAME: "1",
+            SPANDATA.SERVER_ADDRESS: "localhost",
+            SPANDATA.SERVER_PORT: 63791,
+        }
+    )
+    assert span["tags"] == {
+        "redis.transaction": "False",  # For Cluster, this is always False
+        "redis.is_cluster": "True",
+    }
+
+======================================================================================
+CLONE PAR 2
+File: tests/integrations/redis/cluster/test_redis_cluster.py
+Lines: 109 to 146
+
+def test_rediscluster_pipeline(
+    sentry_init, capture_events, send_default_pii, expected_first_ten
+):
+    sentry_init(
+        integrations=[RedisIntegration()],
+        traces_sample_rate=1.0,
+        send_default_pii=send_default_pii,
+    )
+    events = capture_events()
+
+    rc = redis.RedisCluster(host="localhost", port=6379)
+    with sentry_sdk.start_span():
+        pipeline = rc.pipeline()
+        pipeline.get("foo")
+        pipeline.set("bar", 1)
+        pipeline.set("baz", 2)
+        pipeline.execute()
+
+    (event,) = events
+    (span,) = event["spans"]
+    assert span["op"] == "db.redis"
+    assert span["description"] == "redis.pipeline.execute"
+    assert span["data"]["redis.commands.count"] == 3
+    assert span["data"]["redis.commands.first_ten"] == expected_first_ten
+    assert span["data"] == ApproxDict(
+        {
+            SPANDATA.DB_SYSTEM: "redis",
+            # ClusterNode converts localhost to 127.0.0.1
+            SPANDATA.SERVER_ADDRESS: "127.0.0.1",
+            SPANDATA.SERVER_PORT: 6379,
+        }
+    )
+    assert span["tags"] == {
+        "redis.transaction": "False",  # For Cluster, this is always False
+        "redis.is_cluster": "True",
+    }
+
+======================================================================================

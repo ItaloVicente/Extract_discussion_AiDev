@@ -1,0 +1,53 @@
+Project: DDNS | PR: 514 | Commit: 0737b416ca6781143aef01fcb1f4bbe4ec018534
+Clone Fingerprint: accfa3c243a932c35df34b0203be08e4
+Categoria: unique_ini
+
+======================================================================================
+CLONE PAR 1
+File: tests/test_provider_namesilo.py
+Lines: 198 to 216
+
+def test_update_record_success(self, mock_request):
+        """Test successful record update"""
+        mock_request.return_value = {"code": "300"}
+
+        old_record = {"record_id": "12345", "host": "test", "type": "A", "value": "1.2.3.4", "ttl": "3600"}
+
+        result = self.provider._update_record("example.com", old_record, "5.6.7.8", "A", 7200, None, {})
+
+        expected_params = {
+            "domain": "example.com",
+            "rrid": "12345",
+            "rrhost": "test",
+            "rrvalue": "5.6.7.8",
+            "rrtype": "A",
+            "rrttl": "7200",
+        }
+        mock_request.assert_called_once_with("dnsUpdateRecord", **expected_params)
+        self.assertTrue(result)
+
+======================================================================================
+CLONE PAR 2
+File: tests/test_provider_namesilo.py
+Lines: 218 to 236
+
+def test_update_record_keep_existing_ttl(self, mock_request):
+        """Test record update keeping existing TTL"""
+        mock_request.return_value = {"code": "300"}
+
+        old_record = {"record_id": "12345", "host": "test", "type": "A", "value": "1.2.3.4", "ttl": "3600"}
+
+        result = self.provider._update_record("example.com", old_record, "5.6.7.8", "A", None, None, {})
+
+        expected_params = {
+            "domain": "example.com",
+            "rrid": "12345",
+            "rrhost": "test",
+            "rrvalue": "5.6.7.8",
+            "rrtype": "A",
+            "rrttl": "3600",  # Should keep existing TTL
+        }
+        mock_request.assert_called_once_with("dnsUpdateRecord", **expected_params)
+        self.assertTrue(result)
+
+======================================================================================

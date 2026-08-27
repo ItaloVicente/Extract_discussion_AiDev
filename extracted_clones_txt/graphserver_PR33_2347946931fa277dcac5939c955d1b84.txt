@@ -1,0 +1,45 @@
+Project: graphserver | PR: 33 | Commit: 13f4512d1b0ec81ce5f2be71d3dde3ad1c4559d3
+Clone Fingerprint: 2347946931fa277dcac5939c955d1b84
+Categoria: unique_ini
+
+======================================================================================
+CLONE PAR 1
+File: pygs/graphserver/core.py
+Lines: 1745 to 1759
+
+def __repr__(self):
+        return (
+            '<HeadwayBoard calendar=%s timezone=%s agency=%d service_id=%d trip_id="%s" start_time=%d end_time=%d headway_secs=%d>'
+            % (
+                hex(self.calendar.soul),
+                hex(self.timezone.soul),
+                self.agency,
+                self.int_service_id,
+                self.trip_id,
+                self.start_time,
+                self.end_time,
+                self.headway_secs,
+            )
+        )
+
+======================================================================================
+CLONE PAR 2
+File: pygs/graphserver/core.py
+Lines: 1845 to 1859
+
+def __repr__(self):
+        return (
+            '<HeadwayAlight calendar=%s timezone=%s agency=%d service_id=%d trip_id="%s" start_time=%d end_time=%d headway_secs=%d>'
+            % (
+                hex(self.calendar.soul),
+                hex(self.timezone.soul),
+                self.agency,
+                self.int_service_id,
+                self.trip_id,
+                self.start_time,
+                self.end_time,
+                self.headway_secs,
+            )
+        )
+
+======================================================================================

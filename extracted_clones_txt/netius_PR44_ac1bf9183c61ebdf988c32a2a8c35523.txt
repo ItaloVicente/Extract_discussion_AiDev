@@ -1,0 +1,45 @@
+Project: netius | PR: 44 | Commit: c88fcc9d44c2db56c938c7c058022a3289ed4e48
+Clone Fingerprint: ac1bf9183c61ebdf988c32a2a8c35523
+Categoria: unique_ini
+
+======================================================================================
+CLONE PAR 1
+File: src/netius/test/clients/http.py
+Lines: 57 to 71
+
+def test_simple(self):
+        result = netius.clients.HTTPClient.method_s(
+            "GET", "http://%s/get" % self.httpbin, asynchronous=False
+        )
+        self.assertEqual(result["code"], 200)
+        self.assertNotEqual(len(result["data"]), 0)
+        self.assertNotEqual(json.loads(result["data"].decode("utf-8")), None)
+
+        result = netius.clients.HTTPClient.method_s(
+            "GET", "https://%s/get" % self.httpbin, asynchronous=False
+        )
+        self.assertEqual(result["code"], 200)
+        self.assertNotEqual(len(result["data"]), 0)
+        self.assertNotEqual(json.loads(result["data"].decode("utf-8")), None)
+
+======================================================================================
+CLONE PAR 2
+File: src/netius/test/clients/http.py
+Lines: 88 to 102
+
+def test_compression(self):
+        result = netius.clients.HTTPClient.method_s(
+            "GET", "http://%s/gzip" % self.httpbin, asynchronous=False
+        )
+        self.assertEqual(result["code"], 200)
+        self.assertNotEqual(len(result["data"]), 0)
+        self.assertNotEqual(json.loads(result["data"].decode("utf-8")), None)
+
+        result = netius.clients.HTTPClient.method_s(
+            "GET", "http://%s/deflate" % self.httpbin, asynchronous=False
+        )
+        self.assertEqual(result["code"], 200)
+        self.assertNotEqual(len(result["data"]), 0)
+        self.assertNotEqual(json.loads(result["data"].decode("utf-8")), None)
+
+======================================================================================

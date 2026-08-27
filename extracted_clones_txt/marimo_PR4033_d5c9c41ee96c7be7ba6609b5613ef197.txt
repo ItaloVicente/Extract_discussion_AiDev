@@ -1,0 +1,121 @@
+Project: marimo | PR: 4033 | Commit: 2856833a9cdd38f3f1b8b483d6eb63da53142264
+Clone Fingerprint: d5c9c41ee96c7be7ba6609b5613ef197
+Categoria: unique_ini
+
+======================================================================================
+CLONE PAR 1
+File: tests/_cli/test_file_overwrite.py
+Lines: 146 to 200
+
+def test_convert_overwrite_confirm(tmp_path: Path) -> None:
+    """Test convert command with file overwrite confirmation (user confirms)."""
+    # Create a notebook file
+    notebook_path = tmp_path / "test_notebook.ipynb"
+    notebook_content = """
+    {
+     "cells": [
+      {
+       "cell_type": "code",
+       "execution_count": null,
+       "metadata": {},
+       "outputs": [],
+       "source": [
+        "print('Hello, World!')"
+       ]
+      }
+     ],
+     "metadata": {},
+     "nbformat": 4,
+     "nbformat_minor": 4
+    }
+    """
+    notebook_path.write_text(notebook_content)
+    
+    # Create an existing output file
+    output_path = tmp_path / "output.py"
+    output_path.write_text("existing content")
+    
+    p = subprocess.Popen(
+        [
+            "marimo",
+            "convert",
+            str(notebook_path),
+            "-o",
+            str(output_path),
+        ],
+        stdin=subprocess.PIPE,
+    )
+    
+    assert p.poll() is None
+    assert p.stdin is not None
+    
+    # Simulate user confirming overwrite
+    p.stdin.write(b"y\n")
+    p.stdin.flush()
+    
+    # Wait for process to complete
+    p.wait(timeout=5)
+    
+    # Check that the file was overwritten
+    assert output_path.exists()
+    assert p.returncode == 0
+    assert output_path.read_text() != "existing content"
+
+======================================================================================
+CLONE PAR 2
+File: tests/_cli/test_file_overwrite.py
+Lines: 201 to 251
+
+def test_convert_with_yes_flag(tmp_path: Path) -> None:
+    """Test convert command with -y flag to automatically overwrite files."""
+    # Create a notebook file
+    notebook_path = tmp_path / "test_notebook.ipynb"
+    notebook_content = """
+    {
+     "cells": [
+      {
+       "cell_type": "code",
+       "execution_count": null,
+       "metadata": {},
+       "outputs": [],
+       "source": [
+        "print('Hello, World!')"
+       ]
+      }
+     ],
+     "metadata": {},
+     "nbformat": 4,
+     "nbformat_minor": 4
+    }
+    """
+    notebook_path.write_text(notebook_content)
+    
+    # Create an existing output file
+    output_path = tmp_path / "output.py"
+    output_path.write_text("existing content")
+    
+    # Use the -y flag to verify that the file can be overwritten without prompting
+    result = subprocess.run(
+        [
+            "marimo",
+            "-y",
+            "convert",
+            str(notebook_path),
+            "-o",
+            str(output_path),
+        ],
+        capture_output=True,
+        text=True,
+    )
+    
+    # Check that the command completed successfully
+    assert result.returncode == 0
+    
+    # Verify the file was overwritten with -y flag
+    assert output_path.read_text() != "existing content"
+    
+    # Verify there was no prompt in the output
+    assert "Warning: The file" not in result.stdout
+    assert "Overwrite?" not in result.stdout
+
+======================================================================================

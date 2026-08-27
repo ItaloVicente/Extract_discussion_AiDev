@@ -1,0 +1,69 @@
+Project: vllm | PR: 21146 | Commit: 03938cf30cf7d79f01b33d0db9ca4b3247d14eb0
+Clone Fingerprint: 2ba4d4bbbb10b10ef1eee1ed2623cc5d
+Categoria: unique_mei
+
+======================================================================================
+CLONE PAR 1
+File: vllm/model_executor/layers/quantization/compressed_tensors/compressed_tensors_moe.py
+Lines: 1112 to 1136
+
+class CompressedTensorsWNA16MarlinMoEMethod(CompressedTensorsMoEMethod):
+
+    def __init__(
+            self,
+            quant_config: "CompressedTensorsConfig"  # type: ignore # noqa E501
+    ):
+        self.quant_config = quant_config
+        # TODO: @dsikka: refactor this to use schemes as other kernels
+        # are supported + check if the layer is being ignored.
+        config = self.quant_config.target_scheme_map["Linear"].get("weights")
+        self.num_bits = config.num_bits
+        self.packed_factor = 32 // config.num_bits
+        self.strategy = config.strategy
+        self.group_size = config.group_size
+        self.actorder = config.actorder
+        assert config.symmetric, (
+            "Only symmetric quantization is supported for MoE")
+
+        if not (self.quant_config.quant_format
+                == CompressionFormat.pack_quantized.value
+                and self.num_bits in WNA16_SUPPORTED_BITS):
+            raise ValueError("For Fused MoE layers, only ",
+                             f"{CompressionFormat.pack_quantized.value} ",
+                             "is supported for the following bits: ",
+                             f"{WNA16_SUPPORTED_BITS}")
+
+======================================================================================
+CLONE PAR 2
+File: vllm/model_executor/layers/quantization/compressed_tensors/compressed_tensors_moe.py
+Lines: 1414 to 1440
+
+class CompressedTensorsWNA16MoEMethod(CompressedTensorsMoEMethod):
+
+    def __init__(
+            self,
+            quant_config: "CompressedTensorsConfig"  # type: ignore # noqa E501
+    ):
+        self.quant_config = quant_config
+        # TODO: @dsikka: refactor this to use schemes as other kernels
+        # are supported + check if the layer is being ignored.
+        config = self.quant_config.target_scheme_map["Linear"].get("weights")
+        self.num_bits = config.num_bits
+        self.packed_factor = 32 // config.num_bits
+        self.strategy = config.strategy
+        # channelwise is not supported by this kernel
+        assert config.strategy == "group"
+        self.group_size = config.group_size
+        # grouped actorder isn't supported by this kernel
+        assert config.actorder != "group"
+        assert config.symmetric, (
+            "Only symmetric quantization is supported for MoE")
+
+        if not (self.quant_config.quant_format
+                == CompressionFormat.pack_quantized.value
+                and self.num_bits in WNA16_SUPPORTED_BITS):
+            raise ValueError("For Fused MoE layers, only ",
+                             f"{CompressionFormat.pack_quantized.value} ",
+                             "is supported for the following bits: ",
+
+======================================================================================

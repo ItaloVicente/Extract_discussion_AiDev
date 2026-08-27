@@ -1,0 +1,91 @@
+Project: keep | PR: 5113 | Commit: 2e278261122afbf399fa1aba7633d8415ef6843b
+Clone Fingerprint: c137f0c109c942638025081030e94ec5
+Categoria: mei_final
+
+======================================================================================
+CLONE PAR 1
+File: tests/test_jira_provider.py
+Lines: 131 to 168
+
+def test_update_issue_with_custom_fields_jira_cloud(
+        self, mock_get, mock_put, jira_provider
+    ):
+        """Test that custom fields are properly formatted when updating a Jira issue"""
+        # Mock the issue key extraction
+        mock_get.return_value.status_code = 200
+        mock_get.return_value.json.return_value = {"key": "TEST-123"}
+
+        # Mock the update request
+        mock_put.return_value.status_code = 204
+
+        # Test data
+        issue_id = "12345"
+        summary = "Test Summary"
+        custom_fields = {"customfield_10696": "10"}
+
+        # Call the update method
+        result = jira_provider._JiraProvider__update_issue(
+            issue_id=issue_id, summary=summary, custom_fields=custom_fields
+        )
+
+        # Verify the request was made with correct payload
+        mock_put.assert_called_once()
+        call_args = mock_put.call_args
+
+        # Check that the request body has the correct format for UPDATE
+        request_body = call_args[1]["json"]
+        assert "update" in request_body
+        assert "customfield_10696" in request_body["update"]
+        assert request_body["update"]["customfield_10696"] == [
+            {"set": "10"}
+        ]  # Set operation
+        assert request_body["update"]["summary"] == [{"set": summary}]
+
+        # Verify the result
+        assert result["issue"]["id"] == issue_id
+        assert result["issue"]["key"] == "TEST-123"
+
+======================================================================================
+CLONE PAR 2
+File: tests/test_jira_provider.py
+Lines: 171 to 208
+
+def test_update_issue_with_custom_fields_jira_onprem(
+        self, mock_get, mock_put, jiraonprem_provider
+    ):
+        """Test that custom fields are properly formatted when updating a Jira On-Prem issue"""
+        # Mock the issue key extraction
+        mock_get.return_value.status_code = 200
+        mock_get.return_value.json.return_value = {"key": "TEST-123"}
+
+        # Mock the update request
+        mock_put.return_value.status_code = 204
+
+        # Test data
+        issue_id = "12345"
+        summary = "Test Summary"
+        custom_fields = {"customfield_10696": "10"}
+
+        # Call the update method
+        result = jiraonprem_provider._JiraonpremProvider__update_issue(
+            issue_id=issue_id, summary=summary, custom_fields=custom_fields
+        )
+
+        # Verify the request was made with correct payload
+        mock_put.assert_called_once()
+        call_args = mock_put.call_args
+
+        # Check that the request body has the correct format for UPDATE
+        request_body = call_args[1]["json"]
+        assert "update" in request_body
+        assert "customfield_10696" in request_body["update"]
+        assert request_body["update"]["customfield_10696"] == [
+            {"set": "10"}
+        ]  # Set operation
+        assert request_body["update"]["summary"] == [{"set": summary}]
+
+        # Verify the result
+        assert result["issue"]["id"] == issue_id
+        assert result["issue"]["key"] == "TEST-123"
+
+======================================================================================

@@ -1,0 +1,93 @@
+Project: keep | PR: 5015 | Commit: d18c0d1003257a85cd158b033ed4b37d43402971
+Clone Fingerprint: a046d760d4606ecc32186b98b8a1dca8
+Categoria: ini_mei_final
+
+======================================================================================
+CLONE PAR 1
+File: tests/test_smtp_provider.py
+Lines: 47 to 85
+
+def test_send_plain_text_email(self, mock_smtp_class, smtp_provider):
+        """Test sending a plain text email."""
+        # Setup mock SMTP instance
+        mock_smtp = MagicMock()
+        mock_smtp_class.return_value = mock_smtp
+
+        # Send plain text email
+        result = smtp_provider._notify(
+            from_email="sender@example.com",
+            from_name="Test Sender",
+            to_email="recipient@example.com",
+            subject="Test Subject",
+            body="This is a plain text email",
+        )
+
+        # Verify SMTP was called correctly
+        mock_smtp_class.assert_called_once_with("smtp.example.com", 587)
+        mock_smtp.starttls.assert_called_once()
+        mock_smtp.login.assert_called_once_with("test@example.com", "testpassword")
+        
+        # Verify email was sent
+        mock_smtp.sendmail.assert_called_once()
+        call_args = mock_smtp.sendmail.call_args
+        assert call_args[0][0] == "sender@example.com"
+        assert call_args[0][1] == "recipient@example.com"
+        
+        # Verify the email content contains plain text
+        email_content = call_args[0][2]
+        assert "Content-Type: text/plain" in email_content
+        assert "This is a plain text email" in email_content
+        
+        # Verify return value
+        assert result == {
+            "from": "sender@example.com",
+            "to": "recipient@example.com",
+            "subject": "Test Subject",
+            "body": "This is a plain text email",
+        }
+
+======================================================================================
+CLONE PAR 2
+File: tests/test_smtp_provider.py
+Lines: 87 to 125
+
+def test_send_html_email(self, mock_smtp_class, smtp_provider):
+        """Test sending an HTML email."""
+        # Setup mock SMTP instance
+        mock_smtp = MagicMock()
+        mock_smtp_class.return_value = mock_smtp
+
+        # Send HTML email
+        result = smtp_provider._notify(
+            from_email="sender@example.com",
+            from_name="Test Sender",
+            to_email="recipient@example.com",
+            subject="Test HTML Subject",
+            html="<p>This is an <strong>HTML</strong> email</p>",
+        )
+
+        # Verify SMTP was called correctly
+        mock_smtp_class.assert_called_once_with("smtp.example.com", 587)
+        mock_smtp.starttls.assert_called_once()
+        mock_smtp.login.assert_called_once_with("test@example.com", "testpassword")
+        
+        # Verify email was sent
+        mock_smtp.sendmail.assert_called_once()
+        call_args = mock_smtp.sendmail.call_args
+        assert call_args[0][0] == "sender@example.com"
+        assert call_args[0][1] == "recipient@example.com"
+        
+        # Verify the email content contains HTML
+        email_content = call_args[0][2]
+        assert "Content-Type: text/html" in email_content
+        assert "<p>This is an <strong>HTML</strong> email</p>" in email_content
+        
+        # Verify return value
+        assert result == {
+            "from": "sender@example.com",
+            "to": "recipient@example.com",
+            "subject": "Test HTML Subject",
+            "html": "<p>This is an <strong>HTML</strong> email</p>",
+        }
+
+======================================================================================

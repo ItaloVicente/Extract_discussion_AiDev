@@ -1,0 +1,35 @@
+Project: crewAI | PR: 3060 | Commit: e7872f02c4024beb17e0cfe0a29efb3f181e3027
+Clone Fingerprint: 805ae4a1818e2323302ff8a38f6e0883
+Categoria: ini_mei
+
+======================================================================================
+CLONE PAR 1
+File: tests/cli/test_create_crew.py
+Lines: 25 to 35
+
+def test_create_folder_structure_strips_single_trailing_slash():
+    with tempfile.TemporaryDirectory() as temp_dir:
+        os.chdir(temp_dir)
+        folder_path, folder_name, class_name = create_folder_structure("hello/")
+        
+        assert folder_name == "hello"
+        assert class_name == "Hello"
+        assert folder_path.name == "hello"
+        assert folder_path.exists()
+
+======================================================================================
+CLONE PAR 2
+File: tests/cli/test_create_crew.py
+Lines: 36 to 46
+
+def test_create_folder_structure_strips_multiple_trailing_slashes():
+    with tempfile.TemporaryDirectory() as temp_dir:
+        os.chdir(temp_dir)
+        folder_path, folder_name, class_name = create_folder_structure("hello///")
+        
+        assert folder_name == "hello"
+        assert class_name == "Hello"
+        assert folder_path.name == "hello"
+        assert folder_path.exists()
+
+======================================================================================

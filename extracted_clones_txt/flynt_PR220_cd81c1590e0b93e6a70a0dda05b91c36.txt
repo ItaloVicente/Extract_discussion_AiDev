@@ -1,0 +1,35 @@
+Project: flynt | PR: 220 | Commit: 3b9cea547dd815c5850e369c992e4a8e12278a0e
+Clone Fingerprint: cd81c1590e0b93e6a70a0dda05b91c36
+Categoria: mei
+
+======================================================================================
+CLONE PAR 1
+File: test/integration/expected_out_single_line/escaped_newline.py
+Lines: 3 to 11
+
+def f():
+    arg = "text"
+    return dedent(
+        f"""\
+        \
+        some {arg}
+        lorem ipsum
+        """
+    )
+
+======================================================================================
+CLONE PAR 2
+File: test/integration/expected_out/escaped_newline.py
+Lines: 3 to 11
+
+def f():
+    arg = "text"
+    return dedent(
+        f"""\
+        \
+        some {arg}
+        lorem ipsum
+        """
+    )
+
+======================================================================================

@@ -1,0 +1,71 @@
+Project: crewAI | PR: 1892 | Commit: 668e195559e712c0ebbfc2d7f53a9f65bf96d7f1
+Clone Fingerprint: 761458a4299f030cf34dd83a693fb1b0
+Categoria: mei_final
+
+======================================================================================
+CLONE PAR 1
+File: src/crewai/flow/html_template_handler.py
+Lines: 49 to 76
+
+def generate_legend_items_html(self, legend_items):
+        """Generate HTML markup for the legend items."""
+        legend_items_html = ""
+        for item in legend_items:
+            if "border" in item:
+                legend_items_html += f"""
+                <div class="legend-item">
+                <div class="legend-color-box" style="background-color: {item['color']}; border: 2px dashed {item['border']};"></div>
+                <div>{item['label']}</div>
+                </div>
+                """
+            elif item.get("dashed") is not None:
+                style = "dashed" if item["dashed"] else "solid"
+                legend_items_html += f"""
+                <div class="legend-item">
+                <div class="legend-{style}" style="border-bottom: 2px {style} {item['color']};"></div>
+                <div>{item['label']}</div>
+                </div>
+                """
+            else:
+                legend_items_html += f"""
+                <div class="legend-item">
+                <div class="legend-color-box" style="background-color: {item['color']};"></div>
+                <div>{item['label']}</div>
+                </div>
+                """
+        return legend_items_html
+
+======================================================================================
+CLONE PAR 2
+File: src/crewai/flow/legend_generator.py
+Lines: 28 to 54
+
+def generate_legend_items_html(legend_items):
+    legend_items_html = ""
+    for item in legend_items:
+        if "border" in item:
+            style = "dashed" if item["dashed"] else "solid"
+            legend_items_html += f"""
+            <div class="legend-item">
+            <div class="legend-color-box" style="background-color: {item['color']}; border: 2px {style} {item['border']}; border-radius: 5px;"></div>
+            <div>{item['label']}</div>
+            </div>
+            """
+        elif item.get("dashed") is not None:
+            style = "dashed" if item["dashed"] else "solid"
+            legend_items_html += f"""
+            <div class="legend-item">
+            <div class="legend-{style}" style="border-bottom: 2px {style} {item['color']}; border-radius: 5px;"></div>
+            <div>{item['label']}</div>
+            </div>
+            """
+        else:
+            legend_items_html += f"""
+            <div class="legend-item">
+            <div class="legend-color-box" style="background-color: {item['color']}; border-radius: 5px;"></div>
+            <div>{item['label']}</div>
+            </div>
+            """
+    return legend_items_html
+
+======================================================================================

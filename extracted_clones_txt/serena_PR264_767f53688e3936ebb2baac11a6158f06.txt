@@ -1,0 +1,152 @@
+Project: serena | PR: 264 | Commit: 194ff3bd699dbcdb181f724a9941115369fe4b5f
+Clone Fingerprint: 767f53688e3936ebb2baac11a6158f06
+Categoria: mei
+
+======================================================================================
+CLONE PAR 1
+File: src/solidlsp/language_servers/rust_analyzer.py
+Lines: 571 to 632
+
+def _start_server(self):
+        """
+        Starts the Rust Analyzer Language Server
+        """
+
+        def register_capability_handler(params):
+            assert "registrations" in params
+            for registration in params["registrations"]:
+                if registration["method"] == "workspace/executeCommand":
+                    self.initialize_searcher_command_available.set()
+                    self.resolve_main_method_available.set()
+            return
+
+        def lang_status_handler(params):
+            # TODO: Should we wait for
+            # server -> client: {'jsonrpc': '2.0', 'method': 'language/status', 'params': {'type': 'ProjectStatus', 'message': 'OK'}}
+            # Before proceeding?
+            if params["type"] == "ServiceReady" and params["message"] == "ServiceReady":
+                self.service_ready_event.set()
+
+        def execute_client_command_handler(params):
+            return []
+
+        def do_nothing(params):
+            return
+
+        def check_experimental_status(params):
+            if params["quiescent"] == True:
+                self.server_ready.set()
+
+        def window_log_message(msg):
+            self.logger.log(f"LSP: window/logMessage: {msg}", logging.INFO)
+
+        self.server.on_request("client/registerCapability", register_capability_handler)
+        self.server.on_notification("language/status", lang_status_handler)
+        self.server.on_notification("window/logMessage", window_log_message)
+        self.server.on_request("workspace/executeClientCommand", execute_client_command_handler)
+        self.server.on_notification("$/progress", do_nothing)
+        self.server.on_notification("textDocument/publishDiagnostics", do_nothing)
+        self.server.on_notification("language/actionableNotification", do_nothing)
+        self.server.on_notification("experimental/serverStatus", check_experimental_status)
+
+        self.logger.log("Starting RustAnalyzer server process", logging.INFO)
+        self.server.start()
+        initialize_params = self._get_initialize_params(self.repository_root_path)
+
+        self.logger.log(
+            "Sending initialize request from LSP client to LSP server and awaiting response",
+            logging.INFO,
+        )
+        init_response = self.server.send.initialize(initialize_params)
+        assert init_response["capabilities"]["textDocumentSync"]["change"] == 2
+        assert "completionProvider" in init_response["capabilities"]
+        assert init_response["capabilities"]["completionProvider"] == {
+            "resolveProvider": True,
+            "triggerCharacters": [":", ".", "'", "("],
+            "completionItem": {"labelDetailsSupport": True},
+        }
+        self.server.notify.initialized({})
+        self.completions_available.set()
+
+        self.server_ready.wait()
+
+======================================================================================
+CLONE PAR 2
+File: src/solidlsp/language_servers/clangd_language_server.py
+Lines: 125 to 197
+
+def _start_server(self):
+        """
+        Starts the Clangd Language Server, waits for the server to be ready and yields the LanguageServer instance.
+
+        Usage:
+        ```
+        async with lsp.start_server():
+            # LanguageServer has been initialized and ready to serve requests
+            await lsp.request_definition(...)
+            await lsp.request_references(...)
+            # Shutdown the LanguageServer on exit from scope
+        # LanguageServer has been shutdown
+        """
+
+        def register_capability_handler(params):
+            assert "registrations" in params
+            for registration in params["registrations"]:
+                if registration["method"] == "workspace/executeCommand":
+                    self.initialize_searcher_command_available.set()
+                    self.resolve_main_method_available.set()
+            return
+
+        def lang_status_handler(params):
+            # TODO: Should we wait for
+            # server -> client: {'jsonrpc': '2.0', 'method': 'language/status', 'params': {'type': 'ProjectStatus', 'message': 'OK'}}
+            # Before proceeding?
+            if params["type"] == "ServiceReady" and params["message"] == "ServiceReady":
+                self.service_ready_event.set()
+
+        def execute_client_command_handler(params):
+            return []
+
+        def do_nothing(params):
+            return
+
+        def check_experimental_status(params):
+            if params["quiescent"] == True:
+                self.server_ready.set()
+
+        def window_log_message(msg):
+            self.logger.log(f"LSP: window/logMessage: {msg}", logging.INFO)
+
+        self.server.on_request("client/registerCapability", register_capability_handler)
+        self.server.on_notification("language/status", lang_status_handler)
+        self.server.on_notification("window/logMessage", window_log_message)
+        self.server.on_request("workspace/executeClientCommand", execute_client_command_handler)
+        self.server.on_notification("$/progress", do_nothing)
+        self.server.on_notification("textDocument/publishDiagnostics", do_nothing)
+        self.server.on_notification("language/actionableNotification", do_nothing)
+        self.server.on_notification("experimental/serverStatus", check_experimental_status)
+
+        self.logger.log("Starting Clangd server process", logging.INFO)
+        self.server.start()
+        initialize_params = self._get_initialize_params(self.repository_root_path)
+
+        self.logger.log(
+            "Sending initialize request from LSP client to LSP server and awaiting response",
+            logging.INFO,
+        )
+        init_response = self.server.send.initialize(initialize_params)
+        assert init_response["capabilities"]["textDocumentSync"]["change"] == 2
+        assert "completionProvider" in init_response["capabilities"]
+        assert init_response["capabilities"]["completionProvider"] == {
+            "triggerCharacters": [".", "<", ">", ":", '"', "/", "*"],
+            "resolveProvider": False,
+        }
+
+        self.server.notify.initialized({})
+
+        self.completions_available.set()
+        # set ready flag
+        self.server_ready.set()
+        self.server_ready.wait()
+
+======================================================================================

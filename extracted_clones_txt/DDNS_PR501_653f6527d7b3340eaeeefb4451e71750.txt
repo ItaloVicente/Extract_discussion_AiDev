@@ -1,0 +1,60 @@
+Project: DDNS | PR: 501 | Commit: f2e6e567687f5bb41f982ad6095b810f1964bb87
+Clone Fingerprint: 653f6527d7b3340eaeeefb4451e71750
+Categoria: ini_mei_final
+
+======================================================================================
+CLONE PAR 1
+File: tests/test_provider_alidns.py
+Lines: 265 to 286
+
+def test_update_record_with_fallback_line(self):
+        """Test _update_record method uses old record's line when line is None"""
+        provider = AlidnsProvider(self.auth_id, self.auth_token)
+
+        old_record = {"RecordId": "123456", "RR": "www", "Line": "default"}
+
+        with patch.object(provider, "_request") as mock_request:
+            mock_request.return_value = {"RecordId": "123456"}
+
+            result = provider._update_record("example.com", old_record, "5.6.7.8", "A", None, None, {})
+
+            mock_request.assert_called_once_with(
+                "UpdateDomainRecord",
+                RecordId="123456",
+                Value="5.6.7.8",
+                RR="www",
+                Type="A",
+                TTL=None,
+                Line="default",  # Should use old record's line
+            )
+            self.assertTrue(result)
+
+======================================================================================
+CLONE PAR 2
+File: tests/test_provider_alidns.py
+Lines: 346 to 368
+
+def test_line_configuration_support(self):
+        """Test that AlidnsProvider supports line configuration"""
+        provider = AlidnsProvider(self.auth_id, self.auth_token)
+
+        old_record = {"RecordId": "123456", "RR": "www", "Line": "default"}
+
+        with patch.object(provider, "_request") as mock_request:
+            mock_request.return_value = {"RecordId": "123456"}
+
+            # Test with custom line parameter
+            result = provider._update_record("example.com", old_record, "5.6.7.8", "A", 600, "telecom", {})
+
+            mock_request.assert_called_once_with(
+                "UpdateDomainRecord",
+                RecordId="123456",
+                Value="5.6.7.8",
+                RR="www",
+                Type="A",
+                TTL=600,
+                Line="telecom",  # Should use the provided line parameter
+            )
+            self.assertTrue(result)
+
+======================================================================================

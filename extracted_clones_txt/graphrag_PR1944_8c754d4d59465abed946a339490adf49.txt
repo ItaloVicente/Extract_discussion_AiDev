@@ -1,0 +1,82 @@
+Project: graphrag | PR: 1944 | Commit: 079ddfe86e80c4c8c7a8573d55de29fa854b8639
+Clone Fingerprint: 8c754d4d59465abed946a339490adf49
+Categoria: mei_final
+
+======================================================================================
+CLONE PAR 1
+File: tests/unit/logger/test_standard_logging.py
+Lines: 89 to 121
+
+def test_init_loggers_default_config():
+    """Test that init_loggers uses default file config when none provided."""
+    with tempfile.TemporaryDirectory() as temp_dir:
+        # call init_loggers with no config (should default to file logging)
+        init_loggers(root_dir=temp_dir)
+
+        logger = logging.getLogger("graphrag")
+
+        # Should have a file handler due to default config
+        file_handlers = [
+            h for h in logger.handlers if isinstance(h, logging.FileHandler)
+        ]
+        assert len(file_handlers) > 0
+
+        # test that logging works
+        test_message = "Test default config message"
+        logger.info(test_message)
+
+        # check that the log file was created with default structure
+        log_file = Path(temp_dir) / "logs" / "logs.txt"
+        assert log_file.exists()
+
+        with open(log_file) as f:
+            content = f.read()
+            assert test_message in content
+
+        # clean up
+        for handler in logger.handlers[:]:
+            if isinstance(handler, logging.FileHandler):
+                handler.close()
+        logger.handlers.clear()
+
+======================================================================================
+CLONE PAR 2
+File: tests/unit/logger/test_standard_logging.py
+Lines: 122 to 157
+
+def test_init_loggers_file_config():
+    """Test that init_loggers works with file configuration."""
+    with tempfile.TemporaryDirectory() as temp_dir:
+        config = get_default_graphrag_config(root_dir=temp_dir)
+        config.reporting = ReportingConfig(type=ReportingType.file, base_dir="logs")
+
+        # call init_loggers with file config
+        init_loggers(config=config, root_dir=temp_dir)
+
+        logger = logging.getLogger("graphrag")
+
+        # should have a file handler
+        file_handlers = [
+            h for h in logger.handlers if isinstance(h, logging.FileHandler)
+        ]
+        assert len(file_handlers) > 0
+
+        # test that logging works
+        test_message = "Test init_loggers file message"
+        logger.info(test_message)
+
+        # check that the log file was created
+        log_file = Path(temp_dir) / "logs" / "logs.txt"
+        assert log_file.exists()
+
+        with open(log_file) as f:
+            content = f.read()
+            assert test_message in content
+
+        # clean up
+        for handler in logger.handlers[:]:
+            if isinstance(handler, logging.FileHandler):
+                handler.close()
+        logger.handlers.clear()
+
+======================================================================================

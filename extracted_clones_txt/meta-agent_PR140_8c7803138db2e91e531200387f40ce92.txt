@@ -1,0 +1,33 @@
+Project: meta-agent | PR: 140 | Commit: 975abd94842b87ab07bd979d3ef63dcd5ae584db
+Clone Fingerprint: 8c7803138db2e91e531200387f40ce92
+Categoria: ini_mei_final
+
+======================================================================================
+CLONE PAR 1
+File: tests/test_template_sharing.py
+Lines: 10 to 19
+
+def _meta(slug: str) -> TemplateMetadata:
+    return TemplateMetadata(
+        slug=slug,
+        title=slug,
+        description="demo",
+        category=TemplateCategory.CONVERSATION,
+        complexity=TemplateComplexity.BASIC,
+    )
+
+======================================================================================
+CLONE PAR 2
+File: tests/test_template_mixer.py
+Lines: 11 to 20
+
+def _meta(slug: str) -> TemplateMetadata:
+    return TemplateMetadata(
+        slug=slug,
+        title=slug,
+        description="demo",
+        category=TemplateCategory.CONVERSATION,
+        complexity=TemplateComplexity.BASIC,
+    )
+
+======================================================================================
