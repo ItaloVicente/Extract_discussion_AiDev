@@ -13,7 +13,6 @@ OUTPUT_BASE_DIR = "discussion"
 def load_and_index_hf_datasets():
     print("⏳ Carregando banco de dados do Hugging Face (hao-li/AIDev)...")
 
-    # Carregando tabelas e convertendo para Pandas
     df_pr = load_dataset("hao-li/AIDev", "pull_request", split="train").to_pandas()
     df_pr_comments = load_dataset("hao-li/AIDev", "pr_comments", split="train").to_pandas()
     df_pr_reviews = load_dataset("hao-li/AIDev", "pr_reviews", split="train").to_pandas()
@@ -21,7 +20,6 @@ def load_and_index_hf_datasets():
 
     print("🗂️ Indexando tabelas para buscas super rápidas...")
 
-    # Preenchendo NaNs para evitar quebra no Markdown
     df_pr['body'] = df_pr['body'].fillna("*(Sem descrição fornecida)*")
     df_pr_comments['body'] = df_pr_comments['body'].fillna("")
     df_pr_reviews['body'] = df_pr_reviews['body'].fillna("")
@@ -31,7 +29,6 @@ def load_and_index_hf_datasets():
 
 
 def get_unique_prs_from_csvs():
-    """Lê as pastas locais e mapeia se a PR possui clones não mergeados."""
     pr_dict = {}
     print("🔎 Mapeando Pull Requests nos CSVs locais...")
 
@@ -45,7 +42,6 @@ def get_unique_prs_from_csvs():
                 req_cols = {'project', 'pr', 'categoria', 'start_commit', 'end_commit', 'total_commits'}
 
                 if not df_csv.empty and req_cols.issubset(df_csv.columns):
-                    # FILTRO: Identifica clones de tiro único (1, 1, 1) rotulados como ini_mei_final
                     mask_to_drop = (
                             (df_csv["categoria"] == "ini_mei_final") &
                             (df_csv["start_commit"] == 1) &
@@ -53,37 +49,26 @@ def get_unique_prs_from_csvs():
                             (df_csv["total_commits"] == 1)
                     )
 
-                    # Aplica a negação da máscara
                     df_csv = df_csv[~mask_to_drop]
 
                     if df_csv.empty:
                         continue
 
-                    # Agrupa por PR para analisar todos os clones dela
                     grouped = df_csv.groupby(['project', 'pr'])
                     for (proj, pr_num), group in grouped:
-                        # Se ALGUMA categoria não tiver a palavra 'final', então o clone não chegou ao merge
                         has_unmerged = any('final' not in str(cat) for cat in group['categoria'])
-
                         key = (lang, str(proj), int(pr_num))
                         if key not in pr_dict:
                             pr_dict[key] = has_unmerged
                         else:
-                            # Se já existe, atualiza para True se encontrar algum não mergeado
                             if has_unmerged:
                                 pr_dict[key] = True
 
             except Exception as e:
                 print(f"⚠️ Erro ao ler o CSV {file}: {e}")
 
-    # Converte o dicionário auxiliar para a lista final
     unique_pr_list = [
-        {
-            "lang": k[0],
-            "project": k[1],
-            "pr_number": k[2],
-            "has_unmerged_clone": "Yes" if v else "No"
-        }
+        {"lang": k[0], "project": k[1], "pr_number": k[2], "has_unmerged_clone": "Yes" if v else "No"}
         for k, v in pr_dict.items()
     ]
 
@@ -92,7 +77,7 @@ def get_unique_prs_from_csvs():
 
 
 def create_markdown_content(project, pr_number, pr_row, comments_df, reviews_df, rev_comments_df):
-    """Monta a estrutura escaneável do arquivo Markdown."""
+    """Monta a estrutura do arquivo Markdown em ordem puramente cronológica."""
 
     pr_id = pr_row['id']
     pr_url = pr_row.get('html_url', 'URL não disponível')
@@ -100,16 +85,73 @@ def create_markdown_content(project, pr_number, pr_row, comments_df, reviews_df,
     # 1. Filtragem relacional
     pr_comments = comments_df[comments_df['pr_id'] == pr_id]
     pr_reviews = reviews_df[reviews_df['pr_id'] == pr_id]
-
     review_ids = pr_reviews['id'].tolist()
     pr_rev_comments = rev_comments_df[rev_comments_df['pull_request_review_id'].isin(review_ids)]
 
-    # 2. Contagens
-    count_comments = len(pr_comments)
-    count_reviews = len(pr_reviews)
-    count_rev_comments = len(pr_rev_comments)
+    # 2. Empacotamento de Eventos para Ordenação Temporal
+    events = []
 
-    # 3. Construção da String Markdown
+    def parse_date(date_val):
+        """Converte string para timestamp seguro, jogando NaNs para o início do tempo."""
+        dt = pd.to_datetime(date_val, errors='coerce')
+        if pd.isna(dt):
+            return pd.Timestamp.min
+        return dt
+
+    # 2.1 Adiciona o Body da PR
+    pr_date = pr_row.get('created_at', pr_row.get('updated_at', None))
+    events.append({
+        'type': 'PR BODY',
+        'timestamp': parse_date(pr_date),
+        'date_str': str(pr_date) if pd.notna(pr_date) else 'Data desconhecida',
+        'author': pr_row.get('user', 'Desconhecido'),
+        'body': str(pr_row['body']).strip(),
+        'extra': {}
+    })
+
+    # 2.2 Adiciona Comentários Gerais
+    for _, row in pr_comments.iterrows():
+        c_date = row.get('created_at', row.get('updated_at', None))
+        events.append({
+            'type': 'COMENTÁRIO GERAL',
+            'timestamp': parse_date(c_date),
+            'date_str': str(c_date) if pd.notna(c_date) else 'Data desconhecida',
+            'author': row.get('user', 'Desconhecido'),
+            'body': str(row['body']).strip(),
+            'extra': {}
+        })
+
+    # 2.3 Adiciona Reviews (Geralmente usam submitted_at)
+    for _, row in pr_reviews.iterrows():
+        r_date = row.get('submitted_at', row.get('created_at', None))
+        events.append({
+            'type': f"REVISÃO: {row.get('state', 'Sem Status')}",
+            'timestamp': parse_date(r_date),
+            'date_str': str(r_date) if pd.notna(r_date) else 'Data desconhecida',
+            'author': row.get('user', 'Desconhecido'),
+            'body': str(row['body']).strip(),
+            'extra': {}
+        })
+
+    # 2.4 Adiciona Comentários de Linha
+    for _, row in pr_rev_comments.iterrows():
+        l_date = row.get('created_at', row.get('updated_at', None))
+        events.append({
+            'type': 'COMENTÁRIO DE LINHA',
+            'timestamp': parse_date(l_date),
+            'date_str': str(l_date) if pd.notna(l_date) else 'Data desconhecida',
+            'author': row.get('user', 'Desconhecido'),
+            'body': str(row['body']).strip(),
+            'extra': {
+                'path': row.get('path', 'Arquivo desconhecido'),
+                'position': row.get('position', 'Posição desconhecida')
+            }
+        })
+
+    # 3. Ordenação Cronológica Definitiva
+    events.sort(key=lambda x: x['timestamp'])
+
+    # 4. Construção da String Markdown
     md = f"# Discussões da PR #{pr_number} | Projeto: {project}\n\n"
     md += f"**🔗 Link da PR:** [{pr_url}]({pr_url})\n\n"
 
@@ -117,68 +159,38 @@ def create_markdown_content(project, pr_number, pr_row, comments_df, reviews_df,
     md += "| Origem da Tabela | Quantidade de Registros |\n"
     md += "| :--- | :--- |\n"
     md += f"| `pull_request` (Body) | 1 |\n"
-    md += f"| `pr_comments` | {count_comments} |\n"
-    md += f"| `pr_reviews` | {count_reviews} |\n"
-    md += f"| `pr_review_comments` | {count_rev_comments} |\n\n"
+    md += f"| `pr_comments` | {len(pr_comments)} |\n"
+    md += f"| `pr_reviews` | {len(pr_reviews)} |\n"
+    md += f"| `pr_review_comments` | {len(pr_rev_comments)} |\n\n"
 
     md += "---\n\n"
+    md += "## 🕒 Linha do Tempo da Conversa\n\n"
 
-    # Body Original
-    md += f"## 📝 Pull Request Body (Autor: {pr_row.get('user', 'Desconhecido')})\n\n"
-    md += f"> {str(pr_row['body']).replace(chr(10), chr(10) + '> ')}\n\n"
-    md += "---\n\n"
+    # Renderiza os eventos ordenados
+    for ev in events:
+        author = ev['author']
+        date_str = ev['date_str'].replace("T", " ").replace("Z", "")  # Limpa formatação ISO
+        ev_type = ev['type']
+        body = ev['body']
 
-    # PR Comments
-    md += f"## 💬 PR Comments ({count_comments})\n\n"
-    if count_comments == 0:
-        md += "*Nenhum comentário geral registrado.*\n\n"
-    else:
-        for _, comment in pr_comments.iterrows():
-            author = comment.get('user', 'Desconhecido')
-            date = comment.get('created_at', 'Data desconhecida')
-            md += f"**👤 {author}** comentou em {date}:\n\n"
-            md += f"{comment['body']}\n\n"
+        # Ícones baseados no tipo
+        icon = "📝" if "BODY" in ev_type else "💬" if "GERAL" in ev_type else "🛠️" if "REVISÃO" in ev_type else "📍"
 
-    md += "---\n\n"
+        md += f"### {icon} [{ev_type}] por **{author}** em {date_str}\n\n"
 
-    # PR Reviews e Review Comments
-    md += f"## 🔍 PR Reviews ({count_reviews}) e Comentários de Linha ({count_rev_comments})\n\n"
-    if count_reviews == 0:
-        md += "*Nenhuma revisão estruturada registrada.*\n\n"
-    else:
-        for _, review in pr_reviews.iterrows():
-            rev_id = review['id']
-            author = review.get('user', 'Desconhecido')
-            state = review.get('state', 'Sem Status')
-            rev_body = str(review['body']).strip()
+        # Se for comentário de linha, adiciona o path
+        if "LINHA" in ev_type:
+            path = ev['extra'].get('path', '')
+            pos = ev['extra'].get('position', '')
+            md += f"**Arquivo:** `{path}` (Linha/Pos: {pos})\n\n"
 
-            # Cabeçalho da Revisão
-            md += f"### 🛠️ Revisão por {author} [Status: {state}]\n\n"
+        # Trata o Body da mensagem
+        if body and body.lower() not in ['nan', 'none']:
+            md += f"> {body.replace(chr(10), chr(10) + '> ')}\n\n"
+        else:
+            md += "> *(Sem comentário / Texto vazio)*\n\n"
 
-            # Corpo da Revisão (Lidando com os Nulos)
-            md += "**Comentário Geral da Revisão:**\n"
-            if rev_body and rev_body.lower() != 'nan' and rev_body.lower() != 'none':
-                md += f"> {rev_body.replace(chr(10), chr(10) + '> ')}\n\n"
-            else:
-                md += "> *(Revisão enviada sem comentário geral)*\n\n"
-
-            # Comentários de Linha específicos desta revisão
-            line_comments = pr_rev_comments[pr_rev_comments['pull_request_review_id'] == rev_id]
-
-            if not line_comments.empty:
-                md += f"**Comentários de Linha atrelados a esta revisão ({len(line_comments)}):**\n\n"
-                for _, l_comment in line_comments.iterrows():
-                    l_author = l_comment.get('user', 'Desconhecido')
-                    path = l_comment.get('path', 'Arquivo desconhecido')
-                    position = l_comment.get('position', 'Posição desconhecida')
-                    l_body = str(l_comment['body']).strip()
-
-                    md += f"- **📍 {l_author}** em `{path}` (Linha/Pos {position}):\n"
-                    md += f"  > {l_body.replace(chr(10), chr(10) + '  > ')}\n\n"
-            else:
-                md += "*(Nenhum comentário de linha atrelado a esta revisão)*\n\n"
-
-            md += "---\n\n"
+        md += "---\n\n"
 
     return md
 
@@ -191,10 +203,9 @@ def main():
         print("🚨 Nenhuma PR encontrada para processamento. Encerrando.")
         return
 
-    # Dicionário para armazenar os dados do Excel por linguagem
     excel_data = {lang: [] for lang in LANGUAGES}
 
-    print("🚀 Iniciando extração e formatação de discussões...")
+    print("🚀 Iniciando extração e formatação de discussões cronológicas...")
 
     for item in tqdm(prs_to_process, desc="Gerando arquivos Markdown"):
         lang = item['lang']
@@ -213,7 +224,6 @@ def main():
         pr_row = matched_pr.iloc[0]
         pr_url = pr_row.get('html_url', '')
 
-        # Gera e salva o conteúdo Markdown
         md_content = create_markdown_content(
             project, pr_number, pr_row,
             df_pr_comments, df_pr_reviews, df_pr_rev_comments
@@ -226,7 +236,6 @@ def main():
         with open(file_path, "w", encoding="utf-8") as f:
             f.write(md_content)
 
-        # Adiciona a linha ao buffer do Excel
         excel_data[lang].append({
             "Project": project,
             "PR": pr_number,
@@ -235,20 +244,14 @@ def main():
             "Has Discussion?": ""
         })
 
-    # ==========================================
-    # GERAÇÃO DO ARQUIVO EXCEL
-    # ==========================================
     print("\n📊 Gerando arquivo Excel com o resumo...")
     excel_path = os.path.join(OUTPUT_BASE_DIR, "Discussions_Summary.xlsx")
 
     with pd.ExcelWriter(excel_path, engine='openpyxl') as writer:
         for lang in LANGUAGES:
             df_lang = pd.DataFrame(excel_data[lang])
-
-            # Se não houver dados para a linguagem, cria uma aba vazia com as colunas corretas
             if df_lang.empty:
                 df_lang = pd.DataFrame(columns=["Project", "PR", "Has Unmerged Clone", "URL", "Has Discussion?"])
-
             df_lang.to_excel(writer, sheet_name=lang, index=False)
 
     print(f"✅ Arquivos Markdown salvos na pasta '{OUTPUT_BASE_DIR}/'.")
