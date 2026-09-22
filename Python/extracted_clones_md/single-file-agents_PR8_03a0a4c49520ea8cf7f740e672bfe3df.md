@@ -10,7 +10,7 @@
 **File:** `codebase-architectures/atomic-composable-architecture/endpoints/alerts_api.py`
 **Lines:** 105 to 140
 
-```text
+```python
 def mark_as_read(token: str, notification_id: str) -> Dict:
         """
         Mark an alert as read.
@@ -54,7 +54,7 @@ def mark_as_read(token: str, notification_id: str) -> Dict:
 **File:** `codebase-architectures/atomic-composable-architecture/endpoints/user_api.py`
 **Lines:** 163 to 198
 
-```text
+```python
 def change_password(token: str, current_password: str, new_password: str) -> Dict:
         """
         Change a user's password.

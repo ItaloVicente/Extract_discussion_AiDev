@@ -10,7 +10,7 @@
 **File:** `src/test/java/DNAnalyzer/utils/core/DNAToolsTest.java`
 **Lines:** 22 to 30
 
-```text
+```java
 void setUp() {
     try {
       List<String> inputLines = Files.readAllLines(dnaLongTestInput);
@@ -28,7 +28,7 @@ void setUp() {
 **File:** `src/test/java/DNAnalyzer/core/PropertiesTest.java`
 **Lines:** 22 to 29
 
-```text
+```java
 void setUp() {
     try {
       List<String> inputLines = Files.readAllLines(dnaLongTestInput);

@@ -10,7 +10,7 @@
 **File:** `example-agent-codebase-arch/layered-architecture/services/file_service.py`
 **Lines:** 152 to 217
 
-```text
+```python
 def insert_text(path: str, insert_line: int, new_str: str) -> FileOperationResult:
         """
         Insert text at a specific location in a file.
@@ -84,7 +84,7 @@ def insert_text(path: str, insert_line: int, new_str: str) -> FileOperationResul
 **File:** `example-agent-codebase-arch/atomic-composable-architecture/atom/file_operations.py`
 **Lines:** 197 to 264
 
-```text
+```python
 def insert_in_file(path: str, insert_line: int, new_str: str) -> FileOperationResult:
     """
     Insert text at a specific line in a file.

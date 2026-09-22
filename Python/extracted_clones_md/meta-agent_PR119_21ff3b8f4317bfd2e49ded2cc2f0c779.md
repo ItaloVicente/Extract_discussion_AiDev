@@ -10,7 +10,7 @@
 **File:** `tests/integration/test_telemetry_integration.py`
 **Lines:** 12 to 22
 
-```text
+```python
 def valid_spec_dict():
     return {
         "task_description": "Test agent for CLI",
@@ -28,7 +28,7 @@ def valid_spec_dict():
 **File:** `tests/test_cli.py`
 **Lines:** 18 to 29
 
-```text
+```python
 def valid_spec_dict():
     """Provides a dictionary representing a valid specification."""
     return {

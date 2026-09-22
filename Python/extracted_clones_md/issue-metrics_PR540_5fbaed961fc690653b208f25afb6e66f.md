@@ -10,7 +10,7 @@
 **File:** `test_markdown_writer.py`
 **Lines:** 33 to 149
 
-```text
+```python
 def test_write_to_markdown(self):
         """Test that write_to_markdown writes the correct markdown file.
 
@@ -135,7 +135,7 @@ def test_write_to_markdown(self):
 **File:** `test_markdown_writer.py`
 **Lines:** 150 to 262
 
-```text
+```python
 def test_write_to_markdown_with_vertical_bar_in_title(self):
         """Test that write_to_markdown writes the correct markdown file when the title contains a vertical bar.
 

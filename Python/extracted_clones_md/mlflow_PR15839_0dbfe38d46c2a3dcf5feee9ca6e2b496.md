@@ -10,7 +10,7 @@
 **File:** `tests/tracing/test_fluent_classmethod.py`
 **Lines:** 8 to 18
 
-```text
+```python
 def test_trace_with_classmethod():
     class TestModel:
         @mlflow.trace
@@ -28,7 +28,7 @@ def test_trace_with_classmethod():
 **File:** `tests/tracing/test_fluent_classmethod.py`
 **Lines:** 30 to 40
 
-```text
+```python
 def test_trace_with_classmethod_with_params():
     class TestModel:
         @mlflow.trace(name="custom_predict", span_type=SpanType.MODEL_INFERENCE)

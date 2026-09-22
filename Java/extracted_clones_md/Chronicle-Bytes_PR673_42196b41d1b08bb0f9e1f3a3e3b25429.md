@@ -10,7 +10,7 @@
 **File:** `src/main/java/net/openhft/chronicle/bytes/internal/ChunkedMappedFile.java`
 **Lines:** 302 to 324
 
-```text
+```java
 protected void performRelease() {
         try {
             synchronized (stores) {
@@ -42,7 +42,7 @@ protected void performRelease() {
 **File:** `src/main/java/net/openhft/chronicle/bytes/internal/SingleMappedFile.java`
 **Lines:** 218 to 234
 
-```text
+```java
 protected void performRelease() {
         try {
             final MappedBytesStore mbs = store;

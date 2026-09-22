@@ -10,7 +10,7 @@
 **File:** `tests/func/test_read_dataset_remote.py`
 **Lines:** 27 to 54
 
-```text
+```python
 def remote_dataset_version_v1(
     remote_dataset_schema, dataset_rows, remote_file_feature_schema
 ):
@@ -45,7 +45,7 @@ def remote_dataset_version_v1(
 **File:** `tests/func/test_read_dataset_remote.py`
 **Lines:** 56 to 83
 
-```text
+```python
 def remote_dataset_version_v2(
     remote_dataset_schema, dataset_rows, remote_file_feature_schema
 ):

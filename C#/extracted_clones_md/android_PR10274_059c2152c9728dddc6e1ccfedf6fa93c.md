@@ -10,7 +10,7 @@
 **File:** `src/Xamarin.Android.Build.Tasks/Utilities/TypeMappingReleaseNativeAssemblyGeneratorCLR.cs`
 **Lines:** 32 to 45
 
-```text
+```csharp
 public override ulong GetBufferSize (object data, string fieldName)
 			{
 				var map_module = EnsureType<TypeMapModule> (data);
@@ -33,7 +33,7 @@ public override ulong GetBufferSize (object data, string fieldName)
 **File:** `src/Xamarin.Android.Build.Tasks/Utilities/TypeMappingReleaseNativeAssemblyGenerator.cs`
 **Lines:** 47 to 60
 
-```text
+```csharp
 public override ulong GetBufferSize (object data, string fieldName)
 			{
 				var map_module = EnsureType<TypeMapModule> (data);

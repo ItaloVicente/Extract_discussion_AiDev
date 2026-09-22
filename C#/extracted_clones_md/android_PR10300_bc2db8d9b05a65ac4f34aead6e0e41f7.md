@@ -10,7 +10,7 @@
 **File:** `src/Xamarin.Android.Build.Tasks/Tasks/GenerateLayoutBindings.BindingGenerator.cs`
 **Lines:** 294 to 303
 
-```text
+```csharp
 public void WriteComment (State state, ICollection<string> lines)
 			{
 				if (lines == null)
@@ -29,7 +29,7 @@ public void WriteComment (State state, ICollection<string> lines)
 **File:** `src/Xamarin.Android.Build.Tasks/Tasks/GenerateLayoutBindings.BindingGenerator.cs`
 **Lines:** 311 to 320
 
-```text
+```csharp
 public void WriteDocComment (State state, ICollection<string> lines)
 			{
 				if (lines == null)

@@ -10,7 +10,7 @@
 **File:** `src/main/java/net/openhft/chronicle/values/CharSequenceFieldModel.java`
 **Lines:** 526 to 545
 
-```text
+```java
 void generateEquals(ValueBuilder valueBuilder, MethodSpec.Builder methodBuilder) {
             if (get != null) {
                 boolean hasGetUsing = getUsing != null;
@@ -39,7 +39,7 @@ void generateEquals(ValueBuilder valueBuilder, MethodSpec.Builder methodBuilder)
 **File:** `src/main/java/net/openhft/chronicle/values/CharSequenceFieldModel.java`
 **Lines:** 560 to 581
 
-```text
+```java
 void generateArrayElementEquals(
                 ArrayFieldModel arrayFieldModel, ValueBuilder valueBuilder,
                 MethodSpec.Builder methodBuilder) {

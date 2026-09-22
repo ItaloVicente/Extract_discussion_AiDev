@@ -10,7 +10,7 @@
 **File:** `numbagg/test/test_nancorrmatrix.py`
 **Lines:** 117 to 132
 
-```text
+```python
 def test_large_matrix(self):
         # Test performance with larger matrix
         np.random.seed(42)
@@ -35,7 +35,7 @@ def test_large_matrix(self):
 **File:** `numbagg/test/test_nancovmatrix.py`
 **Lines:** 131 to 146
 
-```text
+```python
 def test_large_matrix(self):
         # Test performance with larger matrix
         np.random.seed(42)

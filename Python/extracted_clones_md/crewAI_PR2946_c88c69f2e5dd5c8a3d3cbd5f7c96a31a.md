@@ -10,7 +10,7 @@
 **File:** `tests/telemetry/test_telemetry_disable.py`
 **Lines:** 17 to 25
 
-```text
+```python
 def test_telemetry_environment_variables(env_var, value, expected_ready):
     """Test telemetry state with different environment variable configurations."""
     Telemetry._instance = None
@@ -26,7 +26,7 @@ def test_telemetry_environment_variables(env_var, value, expected_ready):
 **File:** `tests/telemetry/test_telemetry.py`
 **Lines:** 23 to 31
 
-```text
+```python
 def test_telemetry_environment_variables(env_var, value, expected_ready):
     """Test telemetry state with different environment variable configurations."""
     Telemetry._instance = None

@@ -10,7 +10,7 @@
 **File:** `app/src/main/java/com/simon/harmonichackernews/utils/Utils.java`
 **Lines:** 289 to 300
 
-```text
+```java
 public static ArrayList<String> getFilterWords(Context ctx) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
         String prefText = prefs.getString("pref_filter", null);
@@ -31,7 +31,7 @@ public static ArrayList<String> getFilterWords(Context ctx) {
 **File:** `app/src/main/java/com/simon/harmonichackernews/utils/Utils.java`
 **Lines:** 301 to 312
 
-```text
+```java
 public static ArrayList<String> getFilterDomains(Context ctx) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(ctx);
         String prefText = prefs.getString("pref_filter_domains", null);

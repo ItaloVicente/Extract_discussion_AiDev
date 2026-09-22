@@ -10,7 +10,7 @@
 **File:** `packages/http-client-java/generator/http-client-generator-test/src/main/java/azure/resourcemanager/operationtemplates/OperationTemplatesManager.java`
 **Lines:** 195 to 203
 
-```text
+```java
 public Configurable withDefaultPollInterval(Duration defaultPollInterval) {
             this.defaultPollInterval
                 = Objects.requireNonNull(defaultPollInterval, "'defaultPollInterval' cannot be null.");
@@ -28,7 +28,7 @@ public Configurable withDefaultPollInterval(Duration defaultPollInterval) {
 **File:** `packages/http-client-java/generator/http-client-generator-test/src/main/java/azure/resourcemanager/resources/ResourcesManager.java`
 **Lines:** 203 to 211
 
-```text
+```java
 public Configurable withDefaultPollInterval(Duration defaultPollInterval) {
             this.defaultPollInterval
                 = Objects.requireNonNull(defaultPollInterval, "'defaultPollInterval' cannot be null.");

@@ -10,7 +10,7 @@
 **File:** `src/main/java/com/cedarsoftware/util/EncryptionUtilities.java`
 **Lines:** 600 to 623
 
-```text
+```java
 public static String decrypt(String key, String hexStr) {
         if (key == null || hexStr == null) {
             throw new IllegalArgumentException("key and hexStr cannot be null");
@@ -43,7 +43,7 @@ public static String decrypt(String key, String hexStr) {
 **File:** `src/main/java/com/cedarsoftware/util/EncryptionUtilities.java`
 **Lines:** 633 to 656
 
-```text
+```java
 public static byte[] decryptBytes(String key, String hexStr) {
         if (key == null || hexStr == null) {
             throw new IllegalArgumentException("key and hexStr cannot be null");

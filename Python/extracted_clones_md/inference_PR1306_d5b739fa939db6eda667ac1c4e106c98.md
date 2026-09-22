@@ -10,7 +10,7 @@
 **File:** `tests/workflows/unit_tests/core_steps/formatters/test_json_parser.py`
 **Lines:** 91 to 106
 
-```text
+```python
 def test_block_run_when_valid_json_given_and_all_fields_declared() -> None:
     # given
     raw_json = json.dumps({"a": "1", "b": "2"})
@@ -33,7 +33,7 @@ def test_block_run_when_valid_json_given_and_all_fields_declared() -> None:
 **File:** `tests/workflows/unit_tests/core_steps/formatters/test_json_parser.py`
 **Lines:** 170 to 186
 
-```text
+```python
 def test_block_run_when_json_in_markdown_provided() -> None:
     # given
     raw_json = json.dumps({"a": "1", "b": "2"})

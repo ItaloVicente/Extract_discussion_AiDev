@@ -10,7 +10,7 @@
 **File:** `src/test/java/net/openhft/chronicle/wire/MarshallableOutBuilderTest.java`
 **Lines:** 115 to 136
 
-```text
+```java
 public void http() throws IOException, InterruptedException {
         InetSocketAddress address = new InetSocketAddress(0);
         HttpServer server = HttpServer.create(address, 0);
@@ -41,7 +41,7 @@ public void http() throws IOException, InterruptedException {
 **File:** `src/test/java/net/openhft/chronicle/wire/MarshallableOutBuilderTest.java`
 **Lines:** 141 to 162
 
-```text
+```java
 public void http2() throws IOException, InterruptedException {
         InetSocketAddress address = new InetSocketAddress(0);
         HttpServer server = HttpServer.create(address, 0);

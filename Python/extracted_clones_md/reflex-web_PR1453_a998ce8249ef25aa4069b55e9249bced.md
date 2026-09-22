@@ -10,7 +10,7 @@
 **File:** `scripts/typesense_indexer.py`
 **Lines:** 195 to 253
 
-```text
+```python
 def verify_indexing_coverage(docs_root: Path, processed_files: List[Path], failed_files: List[tuple]) -> bool:
     """Verify that all markdown files were processed and indexed."""
     all_md_files = list(docs_root.rglob('*.md'))
@@ -76,7 +76,7 @@ def verify_indexing_coverage(docs_root: Path, processed_files: List[Path], faile
 **File:** `scripts/typesense_indexer.py`
 **Lines:** 254 to 313
 
-```text
+```python
 def verify_combined_coverage(all_md_files: List[Path], processed_files: List[Path], failed_files: List[tuple]) -> bool:
     """Verify that all markdown files (docs + blogs) were processed and indexed."""
     total_found = len(all_md_files)

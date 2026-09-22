@@ -10,7 +10,7 @@
 **File:** `smoke-tests/framework/src/main/java/com/microsoft/applicationinsights/smoketest/SmokeTestExtension.java`
 **Lines:** 687 to 699
 
-```text
+```java
 public static Predicate<Envelope> getMetricPredicate(String name) {
     Objects.requireNonNull(name, "name");
     return input -> {
@@ -32,7 +32,7 @@ public static Predicate<Envelope> getMetricPredicate(String name) {
 **File:** `smoke-tests/framework/src/main/java/com/microsoft/applicationinsights/smoketest/SmokeTestExtension.java`
 **Lines:** 724 to 736
 
-```text
+```java
 public static Predicate<Envelope> getStandardMetricPredicate(String metricId) {
     Objects.requireNonNull(metricId, "metricId");
     return input -> {

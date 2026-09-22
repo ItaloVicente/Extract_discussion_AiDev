@@ -10,7 +10,7 @@
 **File:** `test/Microsoft.OpenApi.Tests/Models/References/OpenApiSchemaReferenceTests.cs`
 **Lines:** 127 to 151
 
-```text
+```csharp
 public async Task SerializeSchemaReferenceAsV31JsonWorks(bool produceTerseOutput)
         {
             // Arrange
@@ -44,7 +44,7 @@ public async Task SerializeSchemaReferenceAsV31JsonWorks(bool produceTerseOutput
 **File:** `test/Microsoft.OpenApi.Tests/Models/References/OpenApiSchemaReferenceTests.cs`
 **Lines:** 156 to 180
 
-```text
+```csharp
 public async Task SerializeSchemaReferenceAsV3JsonWorks(bool produceTerseOutput)
         {
             // Arrange

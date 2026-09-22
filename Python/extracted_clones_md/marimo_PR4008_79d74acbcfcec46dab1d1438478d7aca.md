@@ -10,7 +10,7 @@
 **File:** `tests/_ai/llm/_impl.py`
 **Lines:** 127 to 137
 
-```text
+```python
 def test_require_api_key_missing(self, mock_get_context: MagicMock) -> None:
         """Test _require_api_key with missing key."""
         mock_context = MagicMock()
@@ -28,7 +28,7 @@ def test_require_api_key_missing(self, mock_get_context: MagicMock) -> None:
 **File:** `tests/_ai/llm/_impl.py`
 **Lines:** 400 to 410
 
-```text
+```python
 def test_require_api_key_missing(self, mock_get_context: MagicMock) -> None:
         """Test _require_api_key with missing key."""
         mock_context = MagicMock()

@@ -10,7 +10,7 @@
 **File:** `cartography/intel/aws/efs.py`
 **Lines:** 136 to 155
 
-```text
+```python
 def load_efs_mount_targets(
     neo4j_session: neo4j.Session,
     data: List[Dict[str, Any]],
@@ -37,7 +37,7 @@ def load_efs_mount_targets(
 **File:** `cartography/intel/aws/efs.py`
 **Lines:** 178 to 197
 
-```text
+```python
 def load_efs_access_points(
     neo4j_session: neo4j.Session,
     data: List[Dict[str, Any]],

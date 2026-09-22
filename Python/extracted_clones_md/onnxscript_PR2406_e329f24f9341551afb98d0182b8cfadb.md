@@ -10,7 +10,7 @@
 **File:** `onnxscript/rewriter/ort_fusions/group_normalization_merge_silu.py`
 **Lines:** 13 to 36
 
-```text
+```python
 def group_normalization_and_silu_submodule(
     op,
     input,
@@ -41,7 +41,7 @@ def group_normalization_and_silu_submodule(
 **File:** `onnxscript/rewriter/ort_fusions/group_normalization_merge_silu.py`
 **Lines:** 37 to 57
 
-```text
+```python
 def group_normalization_with_silu(
     op,
     input,

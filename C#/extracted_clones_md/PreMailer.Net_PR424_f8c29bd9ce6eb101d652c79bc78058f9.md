@@ -10,7 +10,7 @@
 **File:** `PreMailer.Net/PreMailer.Net.Tests/Issue410Tests.cs`
 **Lines:** 9 to 23
 
-```text
+```csharp
 public void MoveCssInline_PreservesImportantInInlineStyles()
         {
             string input = @"<style> 
@@ -34,7 +34,7 @@ public void MoveCssInline_PreservesImportantInInlineStyles()
 **File:** `PreMailer.Net/PreMailer.Net.Tests/PreMailerTests.cs`
 **Lines:** 192 to 206
 
-```text
+```csharp
 public void MoveCssInline_ImportantFlag_PreservesImportantInInlineStylesForDifferentProperties()
 		{
 			string input = @"<style> 

@@ -10,7 +10,7 @@
 **File:** `tests/trace_server/test_calls_query_builder.py`
 **Lines:** 763 to 823
 
-```text
+```python
 def test_calls_query_with_predicate_filters() -> None:
     cq = CallsQuery(project_id="project")
     cq.add_field("id")
@@ -78,7 +78,7 @@ def test_calls_query_with_predicate_filters() -> None:
 **File:** `tests/trace_server/test_calls_query_builder.py`
 **Lines:** 931 to 1003
 
-```text
+```python
 def test_calls_query_with_predicate_filters_multiple_heavy_conditions() -> None:
     cq = CallsQuery(project_id="project")
     cq.add_field("id")

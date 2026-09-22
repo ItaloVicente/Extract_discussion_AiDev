@@ -10,7 +10,7 @@
 **File:** `posthog/queries/funnels/test/test_funnel_trends.py`
 **Lines:** 508 to 559
 
-```text
+```python
 def test_period_not_final(self):
         # Use timezone-aware datetime to ensure consistent behavior across environments
         now = datetime.now(tz=ZoneInfo("UTC"))
@@ -70,7 +70,7 @@ def test_period_not_final(self):
 **File:** `posthog/hogql_queries/insights/funnels/test/test_funnel_trends.py`
 **Lines:** 547 to 598
 
-```text
+```python
 def test_period_not_final(self):
         now = datetime.now()
 

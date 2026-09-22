@@ -10,7 +10,7 @@
 **File:** `app/controllers/transcription_field_controller.rb`
 **Lines:** 261 to 269
 
-```text
+```ruby
 def authorized?
     unless user_signed_in?
       ajax_redirect_to dashboard_path
@@ -28,7 +28,7 @@ def authorized?
 **File:** `app/controllers/collection_controller.rb`
 **Lines:** 741 to 750
 
-```text
+```ruby
 def authorized?
     unless user_signed_in?
       ajax_redirect_to dashboard_path

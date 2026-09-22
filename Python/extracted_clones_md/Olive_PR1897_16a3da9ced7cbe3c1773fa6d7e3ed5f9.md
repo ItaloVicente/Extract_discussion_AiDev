@@ -10,7 +10,7 @@
 **File:** `test/unit_test/docs/test_version_detection.py`
 **Lines:** 24 to 33
 
-```text
+```python
 def test_exact_tag_match(self, mock_run):
         """Test version detection when HEAD is exactly on a tag."""
         mock_result = MagicMock()
@@ -28,7 +28,7 @@ def test_exact_tag_match(self, mock_run):
 **File:** `test/unit_test/docs/test_version_detection.py`
 **Lines:** 35 to 44
 
-```text
+```python
 def test_multiple_tags_at_head(self, mock_run):
         """Test version detection when HEAD has multiple tags."""
         mock_result = MagicMock()

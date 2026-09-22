@@ -10,7 +10,7 @@
 **File:** `marimo/_smoke_tests/nav_menus.py`
 **Lines:** 16 to 25
 
-```text
+```python
 def __(mo):
     mo.nav_menu(
         {
@@ -28,7 +28,7 @@ def __(mo):
 **File:** `marimo/_smoke_tests/nav_menus.py`
 **Lines:** 66 to 76
 
-```text
+```python
 def __(mo):
     mo.nav_menu(
         {

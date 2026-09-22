@@ -10,7 +10,7 @@
 **File:** `test/Azure.Functions.Cli.Tests/ActionsTests/ResolveActionTests.cs`
 **Lines:** 84 to 94
 
-```text
+```csharp
 public void ThrowErrorOnIncorrectCommandLine(string args)
         {
             var fileSystem = Substitute.For<IFileSystem>();
@@ -30,7 +30,7 @@ public void ThrowErrorOnIncorrectCommandLine(string args)
 **File:** `test/Cli/Func.Unit.Tests/ActionsTests/ResolveActionTests.cs`
 **Lines:** 84 to 94
 
-```text
+```csharp
 public void ThrowErrorOnIncorrectCommandLine(string args)
         {
             var fileSystem = Substitute.For<IFileSystem>();

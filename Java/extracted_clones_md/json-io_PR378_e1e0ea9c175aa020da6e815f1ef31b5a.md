@@ -10,7 +10,7 @@
 **File:** `src/main/java/com/cedarsoftware/io/ReadOptionsBuilder.java`
 **Lines:** 707 to 717
 
-```text
+```java
 public ReadOptionsBuilder addCustomOption(String key, Object value) {
         if (key == null) {
             throw new JsonIoException("Custom option key must not be null.");
@@ -30,7 +30,7 @@ public ReadOptionsBuilder addCustomOption(String key, Object value) {
 **File:** `src/main/java/com/cedarsoftware/io/WriteOptionsBuilder.java`
 **Lines:** 716 to 726
 
-```text
+```java
 public WriteOptionsBuilder addCustomOption(String key, Object value) {
         if (key == null) {
             throw new JsonIoException("Custom option key must not be null.");

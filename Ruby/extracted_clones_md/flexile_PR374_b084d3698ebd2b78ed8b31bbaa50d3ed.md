@@ -10,7 +10,7 @@
 **File:** `backend/app/serializers/tax_documents/form_1099nec_serializer.rb`
 **Lines:** 6 to 10
 
-```text
+```ruby
 def attributes
     TAX_FORM_COPIES.each_with_object({}) do |tax_form_copy, result|
       result.merge!(form_fields_for(tax_form_copy))
@@ -24,7 +24,7 @@ def attributes
 **File:** `backend/app/serializers/tax_documents/form_1042s_serializer.rb`
 **Lines:** 6 to 10
 
-```text
+```ruby
 def attributes
     TAX_FORM_COPIES.each_with_object({}) do |tax_form_copy, result|
       result.merge!(form_fields_for(tax_form_copy))

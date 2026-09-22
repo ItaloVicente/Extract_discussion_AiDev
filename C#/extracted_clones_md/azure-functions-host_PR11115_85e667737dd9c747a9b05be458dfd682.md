@@ -10,7 +10,7 @@
 **File:** `test/WebJobs.Script.Tests/ManagedDependencies/ManagedDependencyOptionsSetupTest.cs`
 **Lines:** 98 to 110
 
-```text
+```csharp
 private IConfiguration BuildHostJsonConfiguration(IEnvironment environment = null)
         {
             environment = environment ?? new TestEnvironment();
@@ -32,7 +32,7 @@ private IConfiguration BuildHostJsonConfiguration(IEnvironment environment = nul
 **File:** `test/WebJobs.Script.Tests/Configuration/HostJsonFileConfigurationSourceTests.cs`
 **Lines:** 268 to 280
 
-```text
+```csharp
 private IConfiguration BuildHostJsonConfiguration(TestMetricsLogger testMetricsLogger, IEnvironment environment = null)
         {
             environment = environment ?? new TestEnvironment();

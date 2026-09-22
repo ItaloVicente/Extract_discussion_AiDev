@@ -10,7 +10,7 @@
 **File:** `src/main/java/net/openhft/chronicle/values/IntegerFieldModel.java`
 **Lines:** 399 to 414
 
-```text
+```java
 String genArrayElementGet(
             ArrayFieldModel arrayFieldModel, ValueBuilder valueBuilder,
             MethodSpec.Builder methodBuilder, Function<String, String> accessType) {
@@ -35,7 +35,7 @@ String genArrayElementGet(
 **File:** `src/main/java/net/openhft/chronicle/values/IntegerFieldModel.java`
 **Lines:** 502 to 518
 
-```text
+```java
 void genArrayElementSet(
             ArrayFieldModel arrayFieldModel, ValueBuilder valueBuilder,
             MethodSpec.Builder methodBuilder, Function<String, String> accessType,

@@ -10,7 +10,7 @@
 **File:** `src/main/java/org/edumips64/core/CacheSimulator.java`
 **Lines:** 173 to 183
 
-```text
+```java
 public void Load(String address, int nByte) {
         try {
             long addr = Long.parseLong(Converter.hexToLong("0x" + address));
@@ -30,7 +30,7 @@ public void Load(String address, int nByte) {
 **File:** `src/main/java/org/edumips64/core/CacheSimulator.java`
 **Lines:** 185 to 196
 
-```text
+```java
 public void Store(String address, int nByte) {
         try {
             long addr = Long.parseLong(Converter.hexToLong("0x" + address));

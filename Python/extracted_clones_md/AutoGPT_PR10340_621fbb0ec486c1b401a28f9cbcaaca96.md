@@ -10,7 +10,7 @@
 **File:** `autogpt_platform/backend/backend/util/gcs_cleanup.py`
 **Lines:** 63 to 118
 
-```text
+```python
 def cleanup_expired_files(self, prefix: str = "autogpt-temp/") -> Dict[str, Any]:
         """
         Clean up expired files with the given prefix.
@@ -74,7 +74,7 @@ def cleanup_expired_files(self, prefix: str = "autogpt-temp/") -> Dict[str, Any]
 **File:** `autogpt_platform/backend/backend/util/gcs_cleanup.py`
 **Lines:** 151 to 212
 
-```text
+```python
 def cleanup_old_files_by_age(self, prefix: str = "autogpt-temp/", max_age_hours: int = 168) -> Dict[str, Any]:
         """
         Clean up files older than the specified age, regardless of metadata.

@@ -10,7 +10,7 @@
 **File:** `java/client/src/main/java/glide/managers/ConnectionManager.java`
 **Lines:** 173 to 205
 
-```text
+```java
 private ConnectionRequest.Builder setupConnectionRequestBuilderGlideClient(
             GlideClientConfiguration configuration) {
         ConnectionRequest.Builder connectionRequestBuilder =
@@ -52,7 +52,7 @@ private ConnectionRequest.Builder setupConnectionRequestBuilderGlideClient(
 **File:** `java/client/src/main/java/glide/managers/ConnectionManager.java`
 **Lines:** 240 to 268
 
-```text
+```java
 private ConnectionRequest.Builder setupConnectionRequestBuilderGlideClusterClient(
             GlideClusterClientConfiguration configuration) {
         ConnectionRequest.Builder connectionRequestBuilder =

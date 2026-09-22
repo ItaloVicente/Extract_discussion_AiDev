@@ -10,7 +10,7 @@
 **File:** `tests/unit/test_sandbox_manager.py`
 **Lines:** 165 to 175
 
-```text
+```python
 def test_invalid_command(monkeypatch, tmp_path):
     fake_client = MagicMock()
     fake_client.ping.return_value = None
@@ -28,7 +28,7 @@ def test_invalid_command(monkeypatch, tmp_path):
 **File:** `tests/unit/test_sandbox_manager.py`
 **Lines:** 176 to 186
 
-```text
+```python
 def test_invalid_resources(monkeypatch, tmp_path):
     fake_client = MagicMock()
     fake_client.ping.return_value = None

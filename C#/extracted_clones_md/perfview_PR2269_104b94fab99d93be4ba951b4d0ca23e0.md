@@ -10,7 +10,7 @@
 **File:** `src/TraceEvent/TraceLog.cs`
 **Lines:** 11268 to 11276
 
-```text
+```csharp
 public static CodeAddressIndex IntructionPointerCodeAddressIndex(this SampledProfileTraceData anEvent)
         {
             TraceLog log = anEvent.Source as TraceLog;
@@ -28,7 +28,7 @@ public static CodeAddressIndex IntructionPointerCodeAddressIndex(this SampledPro
 **File:** `src/TraceEvent/TraceLog.cs`
 **Lines:** 11307 to 11315
 
-```text
+```csharp
 public static CodeAddressIndex IntructionPointerCodeAddressIndex(this PMCCounterProfTraceData anEvent)
         {
             TraceLog log = anEvent.Source as TraceLog;

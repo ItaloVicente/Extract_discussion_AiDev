@@ -10,7 +10,7 @@
 **File:** `pcweb/templates/docpage/blocks/code.py`
 **Lines:** 10 to 21
 
-```text
+```python
 def code_block(code: str, language: str):
     return rx.box(
         rx._x.code_block(
@@ -29,7 +29,7 @@ def code_block(code: str, language: str):
 **File:** `pcweb/templates/docpage/blocks/code.py`
 **Lines:** 23 to 34
 
-```text
+```python
 def code_block_dark(code: str, language: str):
     return rx.box(
         rx._x.code_block(

@@ -10,7 +10,7 @@
 **File:** `vllm/model_executor/layers/quantization/compressed_tensors/compressed_tensors_moe.py`
 **Lines:** 1112 to 1136
 
-```text
+```python
 class CompressedTensorsWNA16MarlinMoEMethod(CompressedTensorsMoEMethod):
 
     def __init__(
@@ -44,7 +44,7 @@ class CompressedTensorsWNA16MarlinMoEMethod(CompressedTensorsMoEMethod):
 **File:** `vllm/model_executor/layers/quantization/compressed_tensors/compressed_tensors_moe.py`
 **Lines:** 1414 to 1440
 
-```text
+```python
 class CompressedTensorsWNA16MoEMethod(CompressedTensorsMoEMethod):
 
     def __init__(

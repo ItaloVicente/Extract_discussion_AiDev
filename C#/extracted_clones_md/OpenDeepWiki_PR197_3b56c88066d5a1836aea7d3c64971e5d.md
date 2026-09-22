@@ -10,7 +10,7 @@
 **File:** `Provider/KoalaWiki.Provider.SqlServer/Migrations/20250513064801_Initial.cs`
 **Lines:** 348 to 376
 
-```text
+```csharp
 protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
@@ -48,7 +48,7 @@ protected override void Down(MigrationBuilder migrationBuilder)
 **File:** `Provider/KoalaWiki.Provider.Sqlite/Migrations/20250429184747_Initial.cs`
 **Lines:** 247 to 266
 
-```text
+```csharp
 protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

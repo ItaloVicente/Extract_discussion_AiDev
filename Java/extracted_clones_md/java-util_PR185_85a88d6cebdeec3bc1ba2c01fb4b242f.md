@@ -10,7 +10,7 @@
 **File:** `src/test/java/com/cedarsoftware/util/EncryptionTest.java`
 **Lines:** 44 to 50
 
-```text
+```java
 public void testConstructorIsPrivate() throws Exception {
         Constructor<EncryptionUtilities> con = EncryptionUtilities.class.getDeclaredConstructor();
         assertEquals(Modifier.PRIVATE, con.getModifiers() & Modifier.PRIVATE);
@@ -26,7 +26,7 @@ public void testConstructorIsPrivate() throws Exception {
 **File:** `src/test/java/com/cedarsoftware/util/ReflectionUtilsTest.java`
 **Lines:** 104 to 110
 
-```text
+```java
 public void testConstructorIsPrivate() throws Exception {
         Constructor<ReflectionUtils> con = ReflectionUtils.class.getDeclaredConstructor();
         assertEquals(Modifier.PRIVATE, con.getModifiers() & Modifier.PRIVATE);

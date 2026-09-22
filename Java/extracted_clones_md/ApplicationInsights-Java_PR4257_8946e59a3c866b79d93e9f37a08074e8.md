@@ -10,7 +10,7 @@
 **File:** `classic-sdk/core/src/main/java/com/microsoft/applicationinsights/telemetry/ExceptionTelemetry.java`
 **Lines:** 100 to 115
 
-```text
+```java
 private static SeverityLevel mapFromInternalSeverityLevel(com.microsoft.applicationinsights.internal.schemav2.SeverityLevel internalSeverityLevel) {
     switch (internalSeverityLevel) {
       case Verbose:
@@ -35,7 +35,7 @@ private static SeverityLevel mapFromInternalSeverityLevel(com.microsoft.applicat
 **File:** `classic-sdk/core/src/main/java/com/microsoft/applicationinsights/telemetry/TraceTelemetry.java`
 **Lines:** 86 to 101
 
-```text
+```java
 private static SeverityLevel mapFromInternalSeverityLevel(com.microsoft.applicationinsights.internal.schemav2.SeverityLevel internalSeverityLevel) {
     switch (internalSeverityLevel) {
       case Verbose:

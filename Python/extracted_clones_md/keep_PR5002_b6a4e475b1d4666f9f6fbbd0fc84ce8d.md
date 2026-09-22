@@ -10,7 +10,7 @@
 **File:** `monitor_pr.py`
 **Lines:** 34 to 41
 
-```text
+```python
 def run_command(cmd):
     """Run a shell command and return output"""
     try:
@@ -26,7 +26,7 @@ def run_command(cmd):
 **File:** `monitor_column_config.py`
 **Lines:** 36 to 43
 
-```text
+```python
 def run_command(cmd):
     """Run a shell command and return output"""
     try:

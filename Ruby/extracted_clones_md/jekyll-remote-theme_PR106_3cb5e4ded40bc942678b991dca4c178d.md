@@ -10,7 +10,7 @@
 **File:** `vendor/bundle/ruby/3.2.0/gems/liquid-4.0.4/lib/liquid/standardfilters.rb`
 **Lines:** 134 to 150
 
-```text
+```ruby
 def sort(input, property = nil)
       ary = InputIterator.new(input)
 
@@ -36,7 +36,7 @@ def sort(input, property = nil)
 **File:** `vendor/bundle/ruby/3.2.0/gems/liquid-4.0.4/lib/liquid/standardfilters.rb`
 **Lines:** 154 to 170
 
-```text
+```ruby
 def sort_natural(input, property = nil)
       ary = InputIterator.new(input)
 

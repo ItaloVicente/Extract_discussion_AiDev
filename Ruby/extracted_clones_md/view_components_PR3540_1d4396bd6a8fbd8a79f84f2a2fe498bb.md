@@ -10,7 +10,7 @@
 **File:** `test/components/breadcrumbs_test.rb`
 **Lines:** 62 to 69
 
-```text
+```ruby
 def test_automatically_selects_last_item
     render_inline(Primer::Beta::Breadcrumbs.new) do |component|
       component.with_item(href: "/") { "Home" }
@@ -27,7 +27,7 @@ def test_automatically_selects_last_item
 **File:** `test/components/breadcrumbs_test.rb`
 **Lines:** 85 to 92
 
-```text
+```ruby
 def test_breadcrumb_items_have_correct_css_class
     render_inline(Primer::Beta::Breadcrumbs.new) do |component|
       component.with_item(href: "/") { "Home" }

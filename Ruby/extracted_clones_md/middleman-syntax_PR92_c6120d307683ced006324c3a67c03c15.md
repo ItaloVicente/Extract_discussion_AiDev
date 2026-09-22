@@ -10,7 +10,7 @@
 **File:** `vendor/bundle/ruby/3.2.0/gems/yard-0.9.37/templates/guide/method/html/setup.rb`
 **Lines:** 6 to 22
 
-```text
+```ruby
 def format_args(object)
   return if object.parameters.nil?
   params = object.parameters
@@ -36,7 +36,7 @@ end
 **File:** `vendor/bundle/ruby/3.2.0/gems/yard-0.9.37/lib/yard/templates/helpers/method_helper.rb`
 **Lines:** 7 to 25
 
-```text
+```ruby
 def format_args(object)
         return if object.parameters.nil?
         params = object.parameters

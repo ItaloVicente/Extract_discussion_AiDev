@@ -10,7 +10,7 @@
 **File:** `examples/load_store_simple.py`
 **Lines:** 18 to 31
 
-```text
+```python
 def simple_kernel(
     x_ptr,
     output_ptr,
@@ -31,7 +31,7 @@ def simple_kernel(
 **File:** `examples/load_store.py`
 **Lines:** 12 to 25
 
-```text
+```python
 def simple_kernel(
     x_ptr,
     output_ptr,

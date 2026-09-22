@@ -10,7 +10,7 @@
 **File:** `src/CoreWCF.Http/tests/DependencyInjection/ServiceTypeErrorMessageTests.cs`
 **Lines:** 83 to 95
 
-```text
+```csharp
 public void Configure(IApplicationBuilder app)
             {
                 app.UseServiceModel(builder =>
@@ -32,7 +32,7 @@ public void Configure(IApplicationBuilder app)
 **File:** `src/CoreWCF.Http/tests/DependencyInjection/ServiceTypeErrorMessageTests.cs`
 **Lines:** 114 to 126
 
-```text
+```csharp
 public void Configure(IApplicationBuilder app)
             {
                 app.UseServiceModel(builder =>

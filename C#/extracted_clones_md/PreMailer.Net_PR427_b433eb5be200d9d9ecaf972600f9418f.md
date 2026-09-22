@@ -10,7 +10,7 @@
 **File:** `PreMailer.Net/PreMailer.Net/Html/EmailHtmlMarkupFormatter.cs`
 **Lines:** 36 to 46
 
-```text
+```csharp
 public override string Text(ICharacterData text)
         {
             var result = base.Text(text);
@@ -30,7 +30,7 @@ public override string Text(ICharacterData text)
 **File:** `PreMailer.Net/PreMailer.Net/Html/PreserveEntitiesHtmlMarkupFormatter.cs`
 **Lines:** 28 to 38
 
-```text
+```csharp
 public override string Text(ICharacterData text)
         {
             var result = base.Text(text);

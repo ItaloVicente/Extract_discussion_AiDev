@@ -10,7 +10,7 @@
 **File:** `test/SuperSocket.Tests/Mcp/McpHttpTests.cs`
 **Lines:** 70 to 89
 
-```text
+```csharp
 public void McpMessage_DetectsRequestResponseNotification()
         {
             // Arrange & Act
@@ -39,7 +39,7 @@ public void McpMessage_DetectsRequestResponseNotification()
 **File:** `test/SuperSocket.MCP.Tests/McpHttpTests.cs`
 **Lines:** 70 to 89
 
-```text
+```csharp
 public void McpMessage_DetectsRequestResponseNotification()
         {
             // Arrange & Act

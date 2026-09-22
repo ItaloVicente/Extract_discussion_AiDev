@@ -10,7 +10,7 @@
 **File:** `src/test/java/com/cedarsoftware/util/ConverterLegacyApiTest.java`
 **Lines:** 56 to 67
 
-```text
+```java
 void convert2_goodData(ConversionFunction func, Object input, Object expected) {
         Object result = func.apply(input);
         if (expected instanceof AtomicBoolean) {
@@ -31,7 +31,7 @@ void convert2_goodData(ConversionFunction func, Object input, Object expected) {
 **File:** `src/test/java/com/cedarsoftware/util/ConverterLegacyApiTest.java`
 **Lines:** 162 to 175
 
-```text
+```java
 void convertTo_goodData(ConversionFunction func, Object input, Object expected) {
         Object result = func.apply(input);
         if (expected instanceof AtomicBoolean) {

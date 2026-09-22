@@ -10,7 +10,7 @@
 **File:** `tests/cli/test_run_with_uv.py`
 **Lines:** 33 to 55
 
-```text
+```python
 def test_run_with_uv_python_version(self, mock_run):
         """Test run_with_uv with Python version."""
         mock_run.return_value = Mock(returncode=0)
@@ -41,7 +41,7 @@ def test_run_with_uv_python_version(self, mock_run):
 **File:** `tests/cli/test_run_with_uv.py`
 **Lines:** 82 to 106
 
-```text
+```python
 def test_run_with_uv_with_packages(self, mock_run):
         """Test run_with_uv with additional packages."""
         mock_run.return_value = Mock(returncode=0)

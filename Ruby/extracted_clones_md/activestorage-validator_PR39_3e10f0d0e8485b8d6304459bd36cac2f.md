@@ -10,7 +10,7 @@
 **File:** `vendor/bundle/ruby/3.2.0/gems/rdoc-6.14.0/lib/rdoc/markdown.rb`
 **Lines:** 2873 to 2926
 
-```text
+```ruby
 def _HtmlOpenAnchor
 
     _save = self.pos
@@ -73,7 +73,7 @@ def _HtmlOpenAnchor
 **File:** `vendor/bundle/ruby/3.2.0/gems/rdoc-6.14.0/lib/rdoc/markdown.rb`
 **Lines:** 6249 to 6298
 
-```text
+```ruby
 def _HtmlBlockClosePre
 
     _save = self.pos

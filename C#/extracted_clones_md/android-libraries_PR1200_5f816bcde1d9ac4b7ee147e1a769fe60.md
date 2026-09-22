@@ -10,7 +10,7 @@
 **File:** `source/com.android.billingclient/billing/Additions/Additions.cs`
 **Lines:** 86 to 104
 
-```text
+```csharp
 public Task<QueryPurchaseHistoryResult> QueryPurchaseHistoryAsync(string skuType)
         {
             var tcs = new TaskCompletionSource<QueryPurchaseHistoryResult>();
@@ -38,7 +38,7 @@ public Task<QueryPurchaseHistoryResult> QueryPurchaseHistoryAsync(string skuType
 **File:** `source/com.android.billingclient/billing/Additions/Additions.cs`
 **Lines:** 106 to 124
 
-```text
+```csharp
 public Task<QueryPurchaseHistoryResult> QueryPurchaseHistoryAsync(QueryPurchaseHistoryParams queryPurchaseHistoryParams)
         {
             var tcs = new TaskCompletionSource<QueryPurchaseHistoryResult>();

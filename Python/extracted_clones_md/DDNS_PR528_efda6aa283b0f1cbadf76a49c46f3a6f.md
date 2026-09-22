@@ -10,7 +10,7 @@
 **File:** `tests/test_provider_noip.py`
 **Lines:** 233 to 247
 
-```text
+```python
 def test_set_record_unexpected_response(self, mock_http):
         """Test set_record method with unexpected response"""
         mock_http.return_value = "unknown_response"
@@ -33,7 +33,7 @@ def test_set_record_unexpected_response(self, mock_http):
 **File:** `tests/test_provider_noip.py`
 **Lines:** 249 to 264
 
-```text
+```python
 def test_set_record_empty_response_error(self, mock_http):
         """Test set_record method with empty response"""
         mock_http.return_value = ""

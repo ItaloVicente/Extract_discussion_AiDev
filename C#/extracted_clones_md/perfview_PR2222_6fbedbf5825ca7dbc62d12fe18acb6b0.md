@@ -10,7 +10,7 @@
 **File:** `src/TraceEvent/TraceEventSession.cs`
 **Lines:** 2634 to 2646
 
-```text
+```csharp
 private static unsafe void CopyStringToPtr(char* toPtr, string str)
         {
             fixed (char* fromPtr = str)
@@ -32,7 +32,7 @@ private static unsafe void CopyStringToPtr(char* toPtr, string str)
 **File:** `src/TraceEvent/ETWKernelControl.cs`
 **Lines:** 314 to 326
 
-```text
+```csharp
 private unsafe static void CopyStringToPtr(char* toPtr, string str)
         {
             fixed (char* fromPtr = str)

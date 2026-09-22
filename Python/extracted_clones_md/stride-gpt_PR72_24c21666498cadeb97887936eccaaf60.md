@@ -10,7 +10,7 @@
 **File:** `threat_model.py`
 **Lines:** 301 to 374
 
-```text
+```python
 def get_threat_model_google(google_api_key, google_model, prompt):
     # Create a client with the Google API key
     client = google_genai.Client(api_key=google_api_key)
@@ -93,7 +93,7 @@ def get_threat_model_google(google_api_key, google_model, prompt):
 **File:** `mitigations.py`
 **Lines:** 88 to 155
 
-```text
+```python
 def get_mitigations_google(google_api_key, google_model, prompt):
     client = google_genai.Client(api_key=google_api_key)
     

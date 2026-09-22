@@ -10,7 +10,7 @@
 **File:** `analysis/figure_9.py`
 **Lines:** 87 to 114
 
-```text
+```python
 def analyze_froggy_results_with_seeds(base_model_name, seeds=[0, 1, 2]):
     """
     Analyzes and averages results across different seeds for a base model name
@@ -45,7 +45,7 @@ def analyze_froggy_results_with_seeds(base_model_name, seeds=[0, 1, 2]):
 **File:** `analysis/figure_12.py`
 **Lines:** 160 to 190
 
-```text
+```python
 def analyze_froggy_results_with_seeds(base_model_name, seeds=[0, 1, 2]):
     """
     Analyzes and averages results across different seeds for a base model name

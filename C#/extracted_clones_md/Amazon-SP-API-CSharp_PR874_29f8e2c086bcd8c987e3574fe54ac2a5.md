@@ -10,7 +10,7 @@
 **File:** `Source/FikaAmazonAPI/Services/ReportService.cs`
 **Lines:** 475 to 508
 
-```text
+```csharp
 public async Task<IList<string>> DownloadExistingReportAndDownloadFileAsync(ReportTypes reportTypes, DateTime? createdSince = null, DateTime? createdUntil = null, CancellationToken cancellationToken = default)
         {
             var parameters = new ParameterReportList();
@@ -53,7 +53,7 @@ public async Task<IList<string>> DownloadExistingReportAndDownloadFileAsync(Repo
 **File:** `Source/FikaAmazonAPI/Services/ReportService.cs`
 **Lines:** 513 to 545
 
-```text
+```csharp
 public async Task<IList<MemoryStream>> DownloadExistingReportAndDownloadFileStreamAsync(ReportTypes reportTypes, DateTime? createdSince = null, DateTime? createdUntil = null, CancellationToken cancellationToken = default)
         {
             var parameters = new ParameterReportList();

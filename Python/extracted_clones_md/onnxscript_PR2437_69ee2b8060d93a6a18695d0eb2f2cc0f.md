@@ -10,7 +10,7 @@
 **File:** `onnxscript/rewriter/fuse_relus_clips_test.py`
 **Lines:** 194 to 204
 
-```text
+```python
 def test_successful_fuse_successive_relu_clip_no_min(self, _, nodes):
         model = ir.from_onnx_text(f"""
             < ir_version: 10, opset_import: ["" : 20] >
@@ -29,7 +29,7 @@ def test_successful_fuse_successive_relu_clip_no_min(self, _, nodes):
 **File:** `onnxscript/rewriter/fuse_relus_clips_test.py`
 **Lines:** 225 to 235
 
-```text
+```python
 def test_fail_fuse_successive_relu_clip_non_initializers(self, _, nodes, rewrite_rule):
         model = ir.from_onnx_text(f"""
             < ir_version: 10, opset_import: ["" : 20] >

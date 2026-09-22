@@ -10,7 +10,7 @@
 **File:** `src/main/java/DNAnalyzer/api/DNAnalyzerApiController.java`
 **Lines:** 556 to 570
 
-```text
+```java
 private String formatAsJson(String output) {
     StringBuilder json = new StringBuilder();
     json.append("{\"results\": [");
@@ -34,7 +34,7 @@ private String formatAsJson(String output) {
 **File:** `src/main/java/DNAnalyzer/web/AnalyzerController.java`
 **Lines:** 159 to 173
 
-```text
+```java
 private String formatAsJson(String output) {
     StringBuilder json = new StringBuilder();
     json.append("{\"results\": [");

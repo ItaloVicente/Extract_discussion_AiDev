@@ -10,7 +10,7 @@
 **File:** `tests/test_markdown_task.py`
 **Lines:** 9 to 32
 
-```text
+```python
 def test_markdown_option_in_task_prompt():
     """Test that when markdown=True, the task prompt includes markdown formatting instructions."""
     
@@ -41,7 +41,7 @@ def test_markdown_option_in_task_prompt():
 **File:** `tests/test_markdown_task.py`
 **Lines:** 33 to 53
 
-```text
+```python
 def test_markdown_option_not_in_task_prompt_by_default():
     """Test that by default (markdown=False), the task prompt does not include markdown formatting instructions."""
     

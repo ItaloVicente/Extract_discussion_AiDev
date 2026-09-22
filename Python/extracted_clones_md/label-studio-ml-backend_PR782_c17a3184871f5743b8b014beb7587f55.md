@@ -10,7 +10,7 @@
 **File:** `label_studio_ml/examples/watsonx_llm/model_wsgi.py`
 **Lines:** 92 to 106
 
-```text
+```python
 def parse_kwargs():
         param = dict()
         for k, v in args.kwargs:
@@ -33,7 +33,7 @@ def parse_kwargs():
 **File:** `label_studio_ml/examples/grounding_dino/_wsgi.py`
 **Lines:** 85 to 99
 
-```text
+```python
 def parse_kwargs():
         param = dict()
         for k, v in args.kwargs:

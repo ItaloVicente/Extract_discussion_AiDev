@@ -10,7 +10,7 @@
 **File:** `app/api/endpoints/workflow.py`
 **Lines:** 225 to 242
 
-```text
+```python
 def pause_workflow(workflow_id: int,
                    db: Session = Depends(get_db),
                    _: schemas.TokenPayload = Depends(get_current_active_user)) -> Any:
@@ -35,7 +35,7 @@ def pause_workflow(workflow_id: int,
 **File:** `app/api/endpoints/workflow.py`
 **Lines:** 244 to 259
 
-```text
+```python
 def reset_workflow(workflow_id: int,
                    db: Session = Depends(get_db),
                    _: schemas.TokenPayload = Depends(get_current_active_user)) -> Any:

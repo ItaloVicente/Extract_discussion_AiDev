@@ -10,7 +10,7 @@
 **File:** `tests/test_config_ssl.py`
 **Lines:** 67 to 75
 
-```text
+```python
 def test_env_ssl_false(self):
         """Test SSL configuration via environment variable DDNS_SSL=false"""
         env_vars = {'DDNS_SSL': 'false', 'DDNS_TOKEN': 'test'}
@@ -27,7 +27,7 @@ def test_env_ssl_false(self):
 **File:** `tests/test_config_ssl.py`
 **Lines:** 122 to 131
 
-```text
+```python
 def test_case_insensitive_env_vars(self):
         """Test that environment variables are case insensitive"""
         env_vars = {'ddns_ssl': 'false', 'ddns_token': 'test'}

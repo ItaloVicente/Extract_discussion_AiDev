@@ -10,7 +10,7 @@
 **File:** `services/Directory/FilterLists.Directory.Infrastructure.Migrations/Migrations/20250729030401_AddAdGuardUkrainianFilter.Designer.cs`
 **Lines:** 18 to 88014
 
-```text
+```csharp
 protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
@@ -88016,7 +88016,7 @@ protected override void BuildTargetModel(ModelBuilder modelBuilder)
 **File:** `services/Directory/FilterLists.Directory.Infrastructure.Migrations/Migrations/20250729012240_UpdateAdGuardPortugueseFilters.Designer.cs`
 **Lines:** 18 to 88048
 
-```text
+```csharp
 protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618

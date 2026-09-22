@@ -10,7 +10,7 @@
 **File:** `src/test/java/com/cedarsoftware/util/UrlUtilitiesTest.java`
 **Lines:** 53 to 58
 
-```text
+```java
 private static void writeResponse(HttpExchange exchange, int code, String body) throws IOException {
         byte[] bytes = body.getBytes(StandardCharsets.UTF_8);
         exchange.sendResponseHeaders(code, bytes.length);
@@ -25,7 +25,7 @@ private static void writeResponse(HttpExchange exchange, int code, String body) 
 **File:** `src/test/java/com/cedarsoftware/util/UrlInvocationHandlerTest.java`
 **Lines:** 37 to 42
 
-```text
+```java
 private static void writeResponse(HttpExchange exchange, int code, String body) throws IOException {
         byte[] bytes = body.getBytes(StandardCharsets.UTF_8);
         exchange.sendResponseHeaders(code, bytes.length);

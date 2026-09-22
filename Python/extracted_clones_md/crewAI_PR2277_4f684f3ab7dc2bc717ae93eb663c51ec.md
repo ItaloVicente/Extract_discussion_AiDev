@@ -10,7 +10,7 @@
 **File:** `tests/custom_llm_test.py`
 **Lines:** 16 to 31
 
-```text
+```python
 def call(
         self,
         messages: Union[str, List[Dict[str, str]]],
@@ -34,7 +34,7 @@ def call(
 **File:** `tests/custom_llm_test.py`
 **Lines:** 69 to 85
 
-```text
+```python
 def call(
         self,
         messages: Union[str, List[Dict[str, str]]],

@@ -10,7 +10,7 @@
 **File:** `src/cachier/cores/redis.py`
 **Lines:** 189 to 201
 
-```text
+```python
 def wait_on_entry_calc(self, key: str) -> Any:
         """Wait on the entry with keys being calculated and returns result."""
         time_spent = 0
@@ -31,7 +31,7 @@ def wait_on_entry_calc(self, key: str) -> Any:
 **File:** `src/cachier/cores/mongo.py`
 **Lines:** 132 to 143
 
-```text
+```python
 def wait_on_entry_calc(self, key: str) -> Any:
         time_spent = 0
         while True:

@@ -10,7 +10,7 @@
 **File:** `affinity/src/main/java/net/openhft/affinity/impl/SolarisJNAAffinity.java`
 **Lines:** 61 to 70
 
-```text
+```java
 public int getThreadId() {
         Integer tid = THREAD_ID.get();
         if (tid == null) {
@@ -29,7 +29,7 @@ public int getThreadId() {
 **File:** `affinity/src/main/java/net/openhft/affinity/impl/OSXJNAAffinity.java`
 **Lines:** 61 to 70
 
-```text
+```java
 public int getThreadId() {
         Integer tid = THREAD_ID.get();
         if (tid == null) {

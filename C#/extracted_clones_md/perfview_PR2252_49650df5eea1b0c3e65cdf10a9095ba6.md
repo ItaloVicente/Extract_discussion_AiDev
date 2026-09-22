@@ -10,7 +10,7 @@
 **File:** `src/TraceEvent/TraceLog.cs`
 **Lines:** 7812 to 7821
 
-```text
+```csharp
 private unsafe CallStackIndex GetStackIndexForStackEvent32(uint* addresses, int addressCount, TraceProcess process, CallStackIndex start)
         {
             for (var it = &addresses[addressCount]; it-- != addresses;)
@@ -29,7 +29,7 @@ private unsafe CallStackIndex GetStackIndexForStackEvent32(uint* addresses, int 
 **File:** `src/TraceEvent/TraceLog.cs`
 **Lines:** 7823 to 7832
 
-```text
+```csharp
 private unsafe CallStackIndex GetStackIndexForStackEvent64(ulong* addresses, int addressCount, TraceProcess process, CallStackIndex start)
         {
             for (var it = &addresses[addressCount]; it-- != addresses;)

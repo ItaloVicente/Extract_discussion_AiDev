@@ -10,7 +10,7 @@
 **File:** `src/test/java/com/cedarsoftware/util/TestUtilTest.java`
 **Lines:** 75 to 94
 
-```text
+```java
 public void testIsReleaseModeTrue()
     {
         String original = System.getProperty("performRelease");
@@ -39,7 +39,7 @@ public void testIsReleaseModeTrue()
 **File:** `src/test/java/com/cedarsoftware/util/TestUtilTest.java`
 **Lines:** 97 to 116
 
-```text
+```java
 public void testIsReleaseModeExplicitFalse()
     {
         String original = System.getProperty("performRelease");

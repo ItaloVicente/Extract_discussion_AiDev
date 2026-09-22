@@ -10,7 +10,7 @@
 **File:** `tests/unit_tests/test_sky_cost_report.py`
 **Lines:** 52 to 72
 
-```text
+```python
 def test_show_cost_report_table_with_days(self):
         """Test show_cost_report_table displays days information."""
         mock_records = []
@@ -39,7 +39,7 @@ def test_show_cost_report_table_with_days(self):
 **File:** `tests/unit_tests/test_sky_cost_report.py`
 **Lines:** 73 to 93
 
-```text
+```python
 def test_show_cost_report_table_without_days(self):
         """Test show_cost_report_table without days information."""
         mock_records = []

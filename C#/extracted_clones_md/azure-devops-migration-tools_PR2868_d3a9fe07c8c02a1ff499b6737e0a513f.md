@@ -10,7 +10,7 @@
 **File:** `src/MigrationTools.Clients.FileSystem.Tests/Endpoints/FileSystemWorkItemEndpointTests.cs`
 **Lines:** 67 to 79
 
-```text
+```csharp
 public void PersistWorkItemExistsTest()
         {
             FileSystemWorkItemEndpoint e1 = (FileSystemWorkItemEndpoint)Services.GetKeyedService<IEndpoint>("Source");
@@ -32,7 +32,7 @@ public void PersistWorkItemExistsTest()
 **File:** `src/MigrationTools.Clients.FileSystem.Tests/Endpoints/FileSystemWorkItemEndpointTests.cs`
 **Lines:** 82 to 95
 
-```text
+```csharp
 public void PersistWorkItemWithFilterTest()
         {
             FileSystemWorkItemEndpoint e1 = (FileSystemWorkItemEndpoint)Services.GetKeyedService<IEndpoint>("Source");

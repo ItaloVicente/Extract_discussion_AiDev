@@ -10,7 +10,7 @@
 **File:** `src/Service.Tests/SqlTests/GraphQLMutationTests/DwSqlGraphQLMutationTests.cs`
 **Lines:** 85 to 104
 
-```text
+```csharp
 public override async Task InsertMutationWithOnlyTypenameInSelectionSet()
         {
             string graphQLMutationName = "createbook";
@@ -39,7 +39,7 @@ public override async Task InsertMutationWithOnlyTypenameInSelectionSet()
 **File:** `src/Service.Tests/SqlTests/GraphQLMutationTests/GraphQLMutationTestBase.cs`
 **Lines:** 520 to 539
 
-```text
+```csharp
 public virtual async Task InsertMutationWithOnlyTypenameInSelectionSet()
         {
             string graphQLMutationName = "createbook";

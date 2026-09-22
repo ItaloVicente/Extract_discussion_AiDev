@@ -10,7 +10,7 @@
 **File:** `apps/api/v1/utils.rb`
 **Lines:** 150 to 180
 
-```text
+```ruby
 def natural_time(time_in_s)
         return if time_in_s.nil?
 
@@ -50,7 +50,7 @@ def natural_time(time_in_s)
 **File:** `lib/onetime/utils.rb`
 **Lines:** 392 to 424
 
-```text
+```ruby
 def natural_time(time_in_s)
       return if time_in_s.nil?
 

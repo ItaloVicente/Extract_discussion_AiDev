@@ -10,7 +10,7 @@
 **File:** `tests/lib/test_schema_checker.py`
 **Lines:** 13 to 20
 
-```text
+```python
 def test_schema_checker_valid():
     usage_scenario_name = 'schema_checker_valid.yml'
     usage_scenario_path = os.path.join(CURRENT_DIR, '../data/usage_scenarios/schema_checker/', usage_scenario_name)
@@ -26,7 +26,7 @@ def test_schema_checker_valid():
 **File:** `tests/lib/test_schema_checker.py`
 **Lines:** 55 to 63
 
-```text
+```python
 def test_schema_checker_network_alias():
     usage_scenario_name = 'schema_checker_valid_network_alias.yml'
     usage_scenario_path = os.path.join(CURRENT_DIR, '../data/usage_scenarios/schema_checker/', usage_scenario_name)

@@ -10,7 +10,7 @@
 **File:** `lib/jekyll-relative-links/filter.rb`
 **Lines:** 40 to 47
 
-```text
+```ruby
 def path_from_root(relative_path, url_base)
       is_absolute = relative_path.start_with? "/"
 
@@ -27,7 +27,7 @@ def path_from_root(relative_path, url_base)
 **File:** `lib/jekyll-relative-links/generator.rb`
 **Lines:** 106 to 113
 
-```text
+```ruby
 def path_from_root(relative_path, url_base)
       is_absolute = relative_path.start_with? "/"
 

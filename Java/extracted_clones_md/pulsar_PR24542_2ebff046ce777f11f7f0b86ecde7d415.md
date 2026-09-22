@@ -10,7 +10,7 @@
 **File:** `pulsar-broker/src/main/java/org/apache/pulsar/broker/delayed/bucket/BucketDelayedDeliveryTracker.java`
 **Lines:** 580 to 595
 
-```text
+```java
 protected long nextDeliveryTime() {
         // Use optimistic read for frequently called method
         long stamp = stampedLock.tryOptimisticRead();
@@ -35,7 +35,7 @@ protected long nextDeliveryTime() {
 **File:** `pulsar-broker/src/main/java/org/apache/pulsar/broker/delayed/bucket/BucketDelayedDeliveryTracker.java`
 **Lines:** 789 to 805
 
-```text
+```java
 public boolean containsMessage(long ledgerId, long entryId) {
         // Try optimistic read first for best performance
         long stamp = stampedLock.tryOptimisticRead();

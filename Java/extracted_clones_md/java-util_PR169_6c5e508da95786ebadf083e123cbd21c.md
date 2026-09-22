@@ -10,7 +10,7 @@
 **File:** `src/main/java/com/cedarsoftware/util/cache/LockingLRUCacheStrategy.java`
 **Lines:** 246 to 255
 
-```text
+```java
 public void clear() {
         lock.lock();
         try {
@@ -29,7 +29,7 @@ public void clear() {
 **File:** `src/main/java/com/cedarsoftware/util/TTLCache.java`
 **Lines:** 369 to 379
 
-```text
+```java
 public void clear() {
         cacheMap.clear();
         lock.lock();

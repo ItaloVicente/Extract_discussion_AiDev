@@ -10,7 +10,7 @@
 **File:** `test_normalizer.py`
 **Lines:** 11 to 26
 
-```text
+```python
 def test_normalize_uri():
     """Test that _normalize_uri extracts only the authority part (schema, host, port) from a URI."""
     # Test with various URI formats
@@ -34,7 +34,7 @@ def test_normalize_uri():
 **File:** `azure-kusto-data/tests/test_cloud_settings.py`
 **Lines:** 14 to 28
 
-```text
+```python
 def test_normalize_uri_extracts_authority(self):
         """Test that _normalize_uri extracts only the authority part (schema, host, port) from a URI."""
         # Test with various URI formats

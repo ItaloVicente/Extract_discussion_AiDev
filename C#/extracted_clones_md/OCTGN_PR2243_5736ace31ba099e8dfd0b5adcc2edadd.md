@@ -10,7 +10,7 @@
 **File:** `octgnFX/o8build/GameValidator.cs`
 **Lines:** 1068 to 1078
 
-```text
+```csharp
 private static void GenerateWarningMessage(string message, params object[] args)
         {
             var oc = Console.ForegroundColor;
@@ -30,7 +30,7 @@ private static void GenerateWarningMessage(string message, params object[] args)
 **File:** `octgnFX/o8build/Program.cs`
 **Lines:** 265 to 275
 
-```text
+```csharp
 public static void UserError(string message, params object[] args)
         {
             var oc = Console.ForegroundColor;

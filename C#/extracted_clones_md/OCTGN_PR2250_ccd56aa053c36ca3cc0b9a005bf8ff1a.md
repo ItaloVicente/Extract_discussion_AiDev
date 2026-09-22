@@ -10,7 +10,7 @@
 **File:** `octgnFX/Octgn.JodsEngine/Scripting/Versions/Script_3_1_0_2.cs`
 **Lines:** 428 to 452
 
-```text
+```csharp
 private bool CanViewPileInScript(Pile pile)
         {
             // If the player owns the pile, they can always view it
@@ -44,7 +44,7 @@ private bool CanViewPileInScript(Pile pile)
 **File:** `octgnFX/Octgn.JodsEngine/Play/Gui/PileBaseControl.cs`
 **Lines:** 80 to 110
 
-```text
+```csharp
 private bool CanViewPile(Pile pile)
         {
             // If the player owns the pile, they can always view it

@@ -10,7 +10,7 @@
 **File:** `tests/gym/tools/test_pdb.py`
 **Lines:** 15 to 22
 
-```text
+```python
 def is_docker_running():
     try:
         subprocess.check_output(["docker", "ps"])
@@ -25,7 +25,7 @@ def is_docker_running():
 **File:** `tests/gym/test_terminal.py`
 **Lines:** 21 to 28
 
-```text
+```python
 def is_docker_running():
     try:
         subprocess.check_output(["docker", "ps"])

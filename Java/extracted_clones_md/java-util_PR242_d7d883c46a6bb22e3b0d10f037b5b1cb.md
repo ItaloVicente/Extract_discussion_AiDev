@@ -10,7 +10,7 @@
 **File:** `src/test/java/com/cedarsoftware/util/TrackingMapTest.java`
 **Lines:** 288 to 302
 
-```text
+```java
 public void testInformAdditionalUsage() throws Exception {
         TrackingMap<String, Object> map = new TrackingMap<>(new CaseInsensitiveMap<String, Object>());
         map.put("first", "firstValue");
@@ -34,7 +34,7 @@ public void testInformAdditionalUsage() throws Exception {
 **File:** `src/test/java/com/cedarsoftware/util/TrackingMapTest.java`
 **Lines:** 305 to 319
 
-```text
+```java
 public void testInformAdditionalUsage1() throws Exception {
         TrackingMap<String, Object> map = new TrackingMap<>(new CaseInsensitiveMap<String, Object>());
         map.put("first", "firstValue");

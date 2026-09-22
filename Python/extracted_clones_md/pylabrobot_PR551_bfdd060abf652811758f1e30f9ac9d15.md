@@ -10,7 +10,7 @@
 **File:** `pylabrobot/resources/hamilton/tip_racks.py`
 **Lines:** 75 to 99
 
-```text
+```python
 def HTF(name: str, with_tips: bool = True) -> TipRack:
   """Tip Rack with 96 1000ul High Volume Tip with filter"""
   return TipRack(
@@ -42,7 +42,7 @@ def HTF(name: str, with_tips: bool = True) -> TipRack:
 **File:** `pylabrobot/resources/hamilton/tip_racks.py`
 **Lines:** 125 to 148
 
-```text
+```python
 def HTF_ULTRAWIDE(name: str, with_tips: bool = True) -> TipRack:
   """Tip Rack with 96 1000ul High Volume Tip with filter"""
   return TipRack(

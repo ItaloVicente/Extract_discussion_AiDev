@@ -10,7 +10,7 @@
 **File:** `app/models/user.rb`
 **Lines:** 123 to 129
 
-```text
+```ruby
 def setup_mfa!
     update!(
       otp_secret: ROTP::Base32.random(32),
@@ -26,7 +26,7 @@ def setup_mfa!
 **File:** `app/models/user.rb`
 **Lines:** 138 to 144
 
-```text
+```ruby
 def disable_mfa!
     update!(
       otp_secret: nil,

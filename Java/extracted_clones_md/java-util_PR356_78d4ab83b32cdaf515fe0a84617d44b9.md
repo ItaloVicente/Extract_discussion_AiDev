@@ -10,7 +10,7 @@
 **File:** `src/test/java/com/cedarsoftware/util/MultiKeyMapTest.java`
 **Lines:** 222 to 251
 
-```text
+```java
 void testSingleElementArrayKeysFlattenInCaseInsensitiveMap3() {
         CaseInsensitiveMap<Object, String> map = new CaseInsensitiveMap<>(Collections.emptyMap(), new MultiKeyMap<>(true));
 
@@ -49,7 +49,7 @@ void testSingleElementArrayKeysFlattenInCaseInsensitiveMap3() {
 **File:** `src/test/java/com/cedarsoftware/util/MultiKeyMapTest.java`
 **Lines:** 254 to 284
 
-```text
+```java
 void testSingleElementArrayKeysNoFlattenInCaseInsensitiveMap3() {
         CaseInsensitiveMap<Object, String> map = new CaseInsensitiveMap<>(Collections.emptyMap(), new MultiKeyMap<>(false));
 

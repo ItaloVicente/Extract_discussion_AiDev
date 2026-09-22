@@ -10,7 +10,7 @@
 **File:** `translations/de/03-CoreGenerativeAITechniques/src/VideosHelper.cs`
 **Lines:** 72 to 92
 
-```text
+```csharp
 static string FindVideosFolder(string startDirectory)
     {
         var currentDirectory = startDirectory;
@@ -40,7 +40,7 @@ static string FindVideosFolder(string startDirectory)
 **File:** `03-CoreGenerativeAITechniques/src/VideosHelper.cs`
 **Lines:** 72 to 92
 
-```text
+```csharp
 static string FindVideosFolder(string startDirectory)
     {
         var currentDirectory = startDirectory;

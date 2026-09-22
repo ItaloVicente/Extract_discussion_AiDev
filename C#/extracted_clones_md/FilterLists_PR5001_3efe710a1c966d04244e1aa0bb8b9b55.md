@@ -10,7 +10,7 @@
 **File:** `services/Directory/FilterLists.Directory.Infrastructure.Migrations/Migrations/20250508015706_4807.Designer.cs`
 **Lines:** 18 to 88076
 
-```text
+```csharp
 protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
@@ -88078,7 +88078,7 @@ protected override void BuildTargetModel(ModelBuilder modelBuilder)
 **File:** `services/Directory/FilterLists.Directory.Infrastructure.Migrations/Migrations/20250726191651_4985.Designer.cs`
 **Lines:** 18 to 88043
 
-```text
+```csharp
 protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618

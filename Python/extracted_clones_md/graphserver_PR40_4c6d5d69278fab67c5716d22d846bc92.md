@@ -10,7 +10,7 @@
 **File:** `pygs/graphserver/core.py`
 **Lines:** 1634 to 1646
 
-```text
+```python
 def __repr__(self):
         return (
             "<TripBoard int_sid=%d sid=%s agency=%d calendar=%s timezone=%s boardings=%s>"
@@ -31,7 +31,7 @@ def __repr__(self):
 **File:** `pygs/graphserver/core.py`
 **Lines:** 2110 to 2121
 
-```text
+```python
 def __repr__(self):
         return (
             "<TripAlight int_sid=%d agency=%d calendar=%s timezone=%s alightings=%s>"

@@ -10,7 +10,7 @@
 **File:** `tests/test_provider_aliesa.py`
 **Lines:** 207 to 232
 
-```text
+```python
 def test_update_record_success(self, mock_request):
         """Test _update_record method with successful update"""
         mock_request.return_value = {"RecordId": "123456"}
@@ -44,7 +44,7 @@ def test_update_record_success(self, mock_request):
 **File:** `tests/test_provider_aliesa.py`
 **Lines:** 272 to 300
 
-```text
+```python
 def test_update_record_with_comment(self, mock_request):
         """Test _update_record method with comment parameter"""
         mock_request.return_value = {"RecordId": "123456"}

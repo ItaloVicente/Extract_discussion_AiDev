@@ -10,7 +10,7 @@
 **File:** `src/test/java/com/cedarsoftware/util/MathUtilitiesTest.java`
 **Lines:** 110 to 135
 
-```text
+```java
 void testMinimumBigInteger()
     {
         BigInteger minBi = MathUtilities.minimum(new BigInteger("-1"), new BigInteger("0"), new BigInteger("1"));
@@ -45,7 +45,7 @@ void testMinimumBigInteger()
 **File:** `src/test/java/com/cedarsoftware/util/MathUtilitiesTest.java`
 **Lines:** 221 to 246
 
-```text
+```java
 void testMaximumBigInteger()
     {
         BigInteger minBi = MathUtilities.minimum(new BigInteger("-1"), new BigInteger("0"), new BigInteger("1"));
